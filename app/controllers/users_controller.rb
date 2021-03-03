@@ -13,7 +13,22 @@ class UsersController < ApplicationController
         else
             render "new"
         end
+    end
 
+    def index
+    end
+
+    def show
+    end
+
+    def edit
+        @user = User.find_by(id: params[:id])
+    end
+
+    def update
+    end
+
+    def destroy
     end
 
     private 
