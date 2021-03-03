@@ -15,20 +15,6 @@ ActiveRecord::Schema.define(version: 2021_03_03_200340) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "admins", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "password_digest"
-    t.boolean "belongs_to_lab", default: false
-    t.boolean "belongs_to_company", default: false
-    t.boolean "super_admin", default: false
-    t.boolean "can_edit", default: false
-    t.integer "lab_id"
-    t.integer "company_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "companies", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -63,6 +49,13 @@ ActiveRecord::Schema.define(version: 2021_03_03_200340) do
     t.string "email"
     t.string "dr_email"
     t.integer "phone"
+    t.boolean "is_customer", default: false
+    t.boolean "belongs_to_lab", default: false
+    t.boolean "belongs_to_company", default: false
+    t.boolean "super_admin", default: false
+    t.boolean "can_edit", default: false
+    t.integer "lab_id"
+    t.integer "company_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

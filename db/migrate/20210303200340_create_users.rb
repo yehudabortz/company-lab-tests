@@ -10,6 +10,15 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :dr_email
       t.integer :phone
 
+      t.boolean :is_customer, :default => false
+      t.boolean :belongs_to_lab, :default => false
+      t.boolean :belongs_to_company, :default => false
+      t.boolean :super_admin, :default => false
+      t.boolean :can_edit, :default => false
+      
+      t.integer :lab_id
+      t.integer :company_id
+
       t.timestamps
     end
   end
