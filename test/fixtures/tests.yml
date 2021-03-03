@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  unique_test_id: 1
+  mma: 1
+  final_result: 1
+  verified: false
+
+two:
+  unique_test_id: 1
+  mma: 1
+  final_result: 1
+  verified: false

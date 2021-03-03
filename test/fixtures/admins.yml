@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: MyString
+  last_name: MyString
+  password_digest: MyString
+  belongs_to_lab: false
+  belongs_to_company: false
+  super_admin: false
+  can_edit: false
+  lab_id: 1
+  company_id: 1
+
+two:
+  first_name: MyString
+  last_name: MyString
+  password_digest: MyString
+  belongs_to_lab: false
+  belongs_to_company: false
+  super_admin: false
+  can_edit: false
+  lab_id: 1
+  company_id: 1
