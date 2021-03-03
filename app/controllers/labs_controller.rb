@@ -20,4 +20,10 @@ class LabsController < ApplicationController
 
     def destroy
     end
+
+    private
+
+    def lab_params
+        params.require(:lab).permit(:name)
+    end
 end
