@@ -1,4 +1,5 @@
 class CompaniesController < ApplicationController
+
     def new
         @company = Company.new
         @company.users.build
@@ -38,4 +39,5 @@ class CompaniesController < ApplicationController
             :can_edit,
             ])
     end
+
 end
