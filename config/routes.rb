@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     resources :tests
   end
 
+  namespace :company do 
+    resources :users
+  end
+
 
   get '/signup', to: 'users#new'
   get '/login', to: 'sessions#new'
