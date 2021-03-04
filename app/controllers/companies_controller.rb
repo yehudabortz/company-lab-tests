@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
     def new
         @company = Company.new
-        @user = @company.users.build(belongs_to_company: true, super_admin: true)
+        @company.users.build
     end
 
     def create
@@ -16,6 +16,7 @@ class CompaniesController < ApplicationController
     end
     
     def show
+        @company = Company.find_by(id: params[:id])
     end
     
     def edit
@@ -31,6 +32,14 @@ class CompaniesController < ApplicationController
     
     def company_params
         binding.pry
-        params.require(:company).permit(:name, users_attributes: [:first_name, :password])
+        params.require(:company).permit(:name, users_attributes: [
+            :first_name, 
+            :last_name, 
+            :email, 
+            :password,
+            :belongs_to_company,
+            :super_admin,
+            :can_edit,
+            ])
     end
 end
