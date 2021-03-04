@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(version: 2021_03_04_020111) do
     t.integer "company_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "google_token"
-    t.string "google_refresh_token"
+    t.string "uid"
+    t.string "provider"
   end
 
 end

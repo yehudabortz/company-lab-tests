@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
 
 
+  get '/auth/google_oauth2'
+  get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
 
   
   root 'static#welcome'

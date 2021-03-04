@@ -42,6 +42,7 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem "dotenv-rails", "~> 2.7" 
 end
 
 group :test do
@@ -59,5 +60,6 @@ gem "bcrypt", "~> 3.1"
 
 gem "pry", "~> 0.14.0"
 gem "omniauth", "~> 2.0"
-
 gem "omniauth-google-oauth2", "~> 0.8.1"
+gem "omniauth-rails_csrf_protection"
+

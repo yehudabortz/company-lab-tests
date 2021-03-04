@@ -4,4 +4,6 @@ class User < ApplicationRecord
 
     belongs_to :company, optional: true
     belongs_to :lab, optional: true
+
+
 end
