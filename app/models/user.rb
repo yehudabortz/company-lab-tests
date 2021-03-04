@@ -4,8 +4,10 @@ class User < ApplicationRecord
 
     belongs_to :company, optional: true
     belongs_to :lab, optional: true
-
+    
+    validates :first_name, :last_name, :email, presence: true
     validates :email, uniqueness: { case_sensitive: false }
+
 
 
 

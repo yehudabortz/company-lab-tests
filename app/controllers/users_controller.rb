@@ -8,7 +8,8 @@ class UsersController < ApplicationController
     end
 
     def create
-        @user = User.find_or_create_by(user_params[:user])
+        # binding.pry
+        @user = User.create(user_params)
         set_user
         redirect_to @user
     end

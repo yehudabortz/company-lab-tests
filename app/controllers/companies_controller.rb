@@ -7,7 +7,7 @@ class CompaniesController < ApplicationController
 
     def create
         if Company.find_by(name: company_params[:name]) || User.find_by(email: company_params[:user][:email])
-            flash[:messeag] = "Unable to create #{company_params[:name]}"
+            flash[:message] = "Unable to create #{company_params[:name]}"
             redirect_to new_company_path
         else
             @company = Company.new(name: company_params[:name])
@@ -19,7 +19,7 @@ class CompaniesController < ApplicationController
                 set_user
                 redirect_to @company
             else
-                flash[:messeag] = @company.errors.full_messages
+                flash[:message] = @company.errors.full_messages
                 redirect_to new_company_path
             end
         end

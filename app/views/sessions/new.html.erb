@@ -1,9 +1,8 @@
 
-<%= form_tag ({controller: 'sessions', action: 'create', method: 'post'}) do %>
-    <%= label_tag :email %>
-    <%= text_field_tag :email %> <br>
-    <%= label_tag :password %>
-    <%= password_field_tag :name %> <br>
-    <%= submit_tag "Login" %> <br>
-
+<%= form_with model: @user, url: login_path do  |f| %>
+    <%= f.label :email %>
+    <%= f.text_field :email %> <br>
+    <%= f.label :password %>
+    <%= f.password_field :password %> <br>
+    <%= f.submit "Login" %> <br>
 <% end %>

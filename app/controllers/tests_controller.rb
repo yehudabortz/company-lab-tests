@@ -3,12 +3,11 @@ class TestsController < ApplicationController
     
     def new
         @test = Test.new
-        @test.unique_test_id = Test.generate_unique_test_id
+
     end
 
     def create
         @test = Test.new(test_params)
-        binding.pry
         if @test.save
             redirect_to @test
         else
