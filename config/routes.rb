@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   get '/logout', to: 'sessions#destroy'
   get '/login', to: 'sessions#new'
+
+
+
   
   root 'static#welcome'
 
