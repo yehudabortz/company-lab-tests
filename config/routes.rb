@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :labs
   resources :companies
 
+  namespace :admin do 
+    resources :tests
+  end
 
 
   get '/signup', to: 'users#new'
@@ -14,9 +17,6 @@ Rails.application.routes.draw do
   get '/auth/google_oauth2'
   get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
 
-  namespace :admin do 
-    resources :tests
-  end
   
   root 'static#welcome'
 
