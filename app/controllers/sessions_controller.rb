@@ -9,20 +9,15 @@ class SessionsController < ApplicationController
     end
     
     def destroy
+
     end
 
     def omniauth
-        @user = User.find_or_create_by(uid: auth['uid'], provider: auth['provider']) do |u|
-            u.first_name = auth[:info][:first_name]
-            u.last_name = auth[:info][:last_name]
-            u.email = auth[:info][:email]
-            u.password = SecureRandom.hex(16)
-        end
+        @user = User.create_from_omniauth(auth)
         if @user.valid?
             redirect_to @user
         else
             flash[:message] = @user.errors.full_messages.join(", ")
-            # binding.pry
             redirect_to new_user_path
         end
     end
