@@ -15,6 +15,7 @@ class SessionsController < ApplicationController
     def omniauth
         @user = User.create_from_omniauth(auth)
         if @user.valid?
+            set_user
             redirect_to @user
         else
             flash[:message] = @user.errors.full_messages.join(", ")
@@ -26,6 +27,10 @@ class SessionsController < ApplicationController
 
     def auth
         request.env['omniauth.auth']
+    end
+
+    def set_user
+       session[:user_id] = @user.id 
     end
 
 end
