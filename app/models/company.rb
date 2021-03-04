@@ -14,6 +14,6 @@ class Company < ApplicationRecord
             user.belongs_to_company = true
             self.users << user
         end
-      end
+    end
 
 end
