@@ -4,7 +4,10 @@ class Company::UsersController < ApplicationController
     end
 
     def new
-        @test = Test.new
-        @test.set_unique_test_id
+        @company = Company.new
+    end
+
+    def create
+
     end
   end 
