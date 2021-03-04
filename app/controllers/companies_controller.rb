@@ -12,13 +12,14 @@ class CompaniesController < ApplicationController
         else
             @company = Company.new(company_params)
             if @company.save
+                @user = @company.users.last
+                set_user
                 redirect_to @company
             else
                 flash[:messeag] = @company.errors
                 redirect_to new_company_path
             end
         end
-
     end
     
     def index
@@ -40,7 +41,7 @@ class CompaniesController < ApplicationController
     private
     
     def company_params
-        params.require(:company).permit(:name, user: [
+        params.require(:company).permit(:name, users_attributes: [
             :first_name, 
             :last_name, 
             :email, 
