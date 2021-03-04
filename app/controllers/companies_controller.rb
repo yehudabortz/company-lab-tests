@@ -6,8 +6,19 @@ class CompaniesController < ApplicationController
     end
 
     def create
-        @company = Company.find_or_create_by(name: company_params[:name])
-        redirect_to @company
+        if Company.find_by(name: company_params[:name])
+            flash[:messeag] = "Unable to create #{company_params[:name]}"
+            redirect_to new_company_path
+        else
+            @company = Company.new(company_params)
+            if @company.save
+                redirect_to @company
+            else
+                flash[:messeag] = @company.errors
+                redirect_to new_company_path
+            end
+        end
+
     end
     
     def index
@@ -29,7 +40,7 @@ class CompaniesController < ApplicationController
     private
     
     def company_params
-        params.require(:company).permit(:name, users_attributes: [
+        params.require(:company).permit(:name, user: [
             :first_name, 
             :last_name, 
             :email, 

@@ -4,5 +4,6 @@
     <%= f.fields_for :users do |f| %>
        <%= render partial: 'users/nested_user_fields', locals: {f: f} %>
     <% end %>
+
     <%= f.submit %>
 <% end %>

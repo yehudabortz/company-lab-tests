@@ -1,16 +1,14 @@
 Rails.application.routes.draw do
-  resources :users
-  resources :tests
-  resources :labs
-  resources :companies
+  resources :users, :tests, :labs, :companies
+
 
   namespace :admin do 
     resources :tests
   end
 
-  namespace :company do 
-    resources :users
-  end
+  # namespace :company do 
+  #   resources :users
+  # end
 
   # nested routes for signup of certain company
   # /companies/1/users/signup
