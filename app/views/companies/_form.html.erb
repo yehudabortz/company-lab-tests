@@ -1,7 +1,7 @@
 <%= form_for @company do |f| %>
     <%= f.label :company_name %>
     <%= f.text_field :name %><br>
-    <%= f.fields_for :users do |f| %>
+    <%= f.fields_for @user do |f| %>
        <%= render partial: 'users/nested_user_fields', locals: {f: f} %>
     <% end %>
 

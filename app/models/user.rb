@@ -5,6 +5,9 @@ class User < ApplicationRecord
     belongs_to :company, optional: true
     belongs_to :lab, optional: true
 
+    validates :email, uniqueness: { case_sensitive: false }
+
+
 
     def self.create_from_omniauth(auth)
         self.find_or_create_by(uid: auth['uid'], provider: auth['provider']) do |u|
