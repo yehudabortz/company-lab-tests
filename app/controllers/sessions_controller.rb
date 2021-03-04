@@ -5,8 +5,10 @@ class SessionsController < ApplicationController
     end
     
     def create
-
-    end
+        @user = User.find_by(email: params[:email])
+        return head(:forbidden) unless @user.authenticate(params[:password])
+        set_user
+      end
     
     def destroy
         session[:user_id] = nil
@@ -25,6 +27,10 @@ class SessionsController < ApplicationController
     end
 
     private 
+
+    def session_params
+        params.require()
+    end
 
     def auth
         request.env['omniauth.auth']

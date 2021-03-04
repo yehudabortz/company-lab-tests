@@ -38,4 +38,5 @@ class TestsController < ApplicationController
         params.require(:test).permit(:unique_test_id, :mma, :creatinine, :final_result, :verified)
     end
 
+
 end

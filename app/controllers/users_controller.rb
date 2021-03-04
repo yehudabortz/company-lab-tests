@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-    before_action :require_login
-    skip_before_action :require_login, only: [:new] 
+    # before_action :require_login
+    # skip_before_action :require_login, only: [:new] 
 
 
     def new
@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
-
+        binding.pry
         if @user.save
             set_user
             redirect_to @user
