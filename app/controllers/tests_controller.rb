@@ -3,6 +3,7 @@ class TestsController < ApplicationController
     
     def new
         @test = Test.new
+        @test.unique_test_id = Test.generate_unique_test_id
     end
 
     def create
@@ -36,4 +37,5 @@ class TestsController < ApplicationController
     def test_params
         params.require(:test).permit(:unique_test_id, :mma, :creatinine, :final_result, :verified)
     end
+
 end
