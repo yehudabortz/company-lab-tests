@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     resources :users
   end
 
+  # nested routes for signup of certain company
+  # /companies/1/users/signup
+
 
   get '/signup', to: 'users#new'
   get '/login', to: 'sessions#new'

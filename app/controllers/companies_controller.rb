@@ -5,11 +5,8 @@ class CompaniesController < ApplicationController
     end
 
     def create
-        @company = Company.new(company_params)
-        if @company.save
-            redirect_to @company
-        end
-        
+        @company = Company.find_or_create_by(name: company_params[:name])
+        redirect_to @company
     end
     
     def index
@@ -31,12 +28,11 @@ class CompaniesController < ApplicationController
     private
     
     def company_params
-        binding.pry
         params.require(:company).permit(:name, users_attributes: [
             :first_name, 
             :last_name, 
             :email, 
-            :password,
+            :password_digest,
             :belongs_to_company,
             :super_admin,
             :can_edit,
