@@ -9,7 +9,8 @@ class SessionsController < ApplicationController
     end
     
     def destroy
-
+        session[:user_id] = nil
+        redirect_to root_path
     end
 
     def omniauth
@@ -29,8 +30,5 @@ class SessionsController < ApplicationController
         request.env['omniauth.auth']
     end
 
-    def set_user
-       session[:user_id] = @user.id 
-    end
 
 end

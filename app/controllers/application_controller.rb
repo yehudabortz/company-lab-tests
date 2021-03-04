@@ -3,27 +3,10 @@ class ApplicationController < ActionController::Base
     
 
 
-    def login_required
-        if !logged_in?
-            redirect_to login_path
-            flash.alert = "User not found."
-        end
-    end
+    private
     
-    def logged_in?
-      !!current_user
-    end
+    def set_user
+      session[:user_id] = @user.id 
+   end
 
-    helper_method :logged_in?
-
-    def current_user
-      if session[:user_id]
-        @current_user = User.find(session[:user_id])
-        @current_user
-      else
-        false
-      end
-    end
-
-    helper_method :current_user
 end

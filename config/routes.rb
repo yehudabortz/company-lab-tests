@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   resources :companies
 
 
-  resources :sessions, only: [:create, :new, :destroy]
+
   get '/signup', to: 'users#new'
-  get '/logout', to: 'sessions#destroy'
   get '/login', to: 'sessions#new'
+  delete '/logout', to: 'sessions#destroy'
 
 
   get '/auth/google_oauth2'
