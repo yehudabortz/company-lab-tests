@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   get '/auth/google_oauth2'
   get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
 
+  namespace :admin do 
+    resources :tests
+  end
   
   root 'static#welcome'
 
