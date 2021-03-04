@@ -1,21 +1,18 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href="https://bulma.io">
-        <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
-      </a>
-  
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
       </a>
+      <%= link_to "Home", root_path, class: "navbar-item" %>
     </div>
   
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
   
-
-        <%= link_to "Test Registration", new_test_path, class: "navbar-item" %>
+        <%= link_to "Test Registration", new_test_path, class: "navbar-item" if logged_in? %>
+        <%= link_to "My Profile", user_path(current_user), class: "navbar-item" if logged_in? %>
   
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link">
@@ -43,9 +40,9 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <%= link_to "Login", login_path, class: "button is-primary" %>
-            <%= link_to "Sign Up", signup_path, class: "button is-light" %>
-            <%= link_to "Log Out", logout_path, method: 'delete', class: "button is-light" %>
+            <%= link_to "Login", login_path, class: "button is-primary" if !logged_in? %>
+            <%= link_to "Sign Up", signup_path, class: "button is-light" if !logged_in? %>
+            <%= link_to "Log Out", logout_path, method: 'delete', class: "button is-light" if logged_in? %>
           </div>
         </div>
       </div>
