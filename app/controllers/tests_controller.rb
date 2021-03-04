@@ -1,4 +1,6 @@
 class TestsController < ApplicationController
+    before_action :login_required
+    
     def new
         @test = Test.new
     end
