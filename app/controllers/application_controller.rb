@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
    protect_from_forgery with: :exception
+   include TestsHelper
    helper_method :current_user, :logged_in?, :current_company, :admin?
 
    
@@ -39,3 +40,4 @@ class ApplicationController < ActionController::Base
       params[:id].to_i
    end
 end
+

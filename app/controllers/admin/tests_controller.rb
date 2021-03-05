@@ -1,7 +1,11 @@
 class Admin::TestsController < ApplicationController
-    before_action  :require_login
-    before_action  :has_company_admin_permissions?, except: [:show]
-    helper_method :has_company_admin_permissions?
+    before_action :require_login
+    before_action :has_company_admin_permissions?, except: [:show]
+    before_action only:[:show, :edit, :update, :destroy] do
+        require_test_ownership(test_belongs_to_company)
+    end
+
+    helper_method :has_company_admin_permissions?, :require_test_ownership
 
     def index
         @tests = Test.belonging_to_current_company(current_company)
@@ -51,6 +55,12 @@ class Admin::TestsController < ApplicationController
 
     def find_test
         @test = Test.find_by(id: params[:id])
+    end
+
+    def test_belongs_to_company
+        if !current_company.nil?
+            current_user.company.test_ids.include?(params_id_integer)
+        end
     end
     
   end 
