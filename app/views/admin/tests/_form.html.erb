@@ -1,6 +1,10 @@
-<%= form_for @test, :url => url_for(:controller => 'admin/tests', :action => 'create') do |f| %>
+<%= form_for @test do |f| %>
     <%= f.label :unique_test_id %>
     <%= f.text_field :unique_test_id, :readonly => true %> <br>
+    <%= f.label :mma %>
+    <%= f.text_field :mma %> <br>
+    <%= f.label :creatinine %>
+    <%= f.text_field :creatinine %> <br>
     <%= f.submit %> <br>
-    <% end %>
-    
+<% end %>
+
