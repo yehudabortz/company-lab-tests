@@ -14,6 +14,7 @@
         <%= link_to "Test Registration", new_test_path, class: "navbar-item" if logged_in? %>
         <%= link_to "My Profile", user_path(current_user), class: "navbar-item" if logged_in? %>
         <%= link_to "New Test", new_admin_test_path, class: "navbar-item" if logged_in? %>
+        <%= link_to "All Tests", admin_tests_path, class: "navbar-item" if logged_in? %>
         <%= link_to "New Company", new_company_path, class: "navbar-item" if !logged_in? %>
   
         <div class="navbar-item has-dropdown is-hoverable">
