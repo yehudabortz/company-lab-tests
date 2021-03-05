@@ -8,4 +8,8 @@ class Test < ApplicationRecord
     def self.generate_unique_test_id
         SecureRandom.random_number(99999)
     end
+
+    def calculate_result
+        binding.pry
+    end
 end

@@ -30,6 +30,10 @@ class Admin::TestsController < ApplicationController
         set_test
     end
 
+    def update
+        binding.pry
+    end
+
     private
 
     def has_company_admin_permissions?
@@ -37,7 +41,7 @@ class Admin::TestsController < ApplicationController
     end
 
     def test_params
-        params.require(:test).permit(:unique_test_id)
+        params.require(:test).permit(:unique_test_id, :mma, :creatinine)
     end
 
     def set_test
