@@ -31,10 +31,28 @@ class TestsController < ApplicationController
     def destroy
     end
 
+    def new_registration
+        @test = Test.new
+        @test.build_user
+
+    end
+
+    def register
+        binding.pry
+    end
+
     private
 
     def test_params
-        params.require(:test).permit(:unique_test_id, :mma, :creatinine, :final_result, :verified)
+        params.require(:test).permit(:unique_test_id, :mma, :creatinine, :final_result, :verified, user_attributes: => [
+            :first_name,
+            :last_name,
+            :email,
+            :birthdate,
+            :gender,
+            :phone,
+            :dr_email
+        ])
     end
 
 
