@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-  resources :users, :tests, :labs, :companies
+  resources :users, :tests, :companies
+  # resources :users, :tests, :labs, :companies
+
 
 
   namespace :admin do 
     resources :tests
+    resources :labs
   end
-
   # namespace :company do 
   #   resources :users
   # end
