@@ -34,4 +34,8 @@ class ApplicationController < ActionController::Base
          current_user.super_admin || current_user.belongs_to_lab || current_user.belongs_to_company
       end
    end
+
+   def params_id_integer
+      params[:id].to_i
+   end
 end
