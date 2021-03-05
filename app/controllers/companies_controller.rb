@@ -33,6 +33,7 @@ class CompaniesController < ApplicationController
     
     def show
         @company = Company.find_by(id: params[:id])
+        @users = User.users_of_current_company(@company)
     end
     
     def edit

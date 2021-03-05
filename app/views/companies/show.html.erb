@@ -1,1 +1,6 @@
-<%= @company.name %>
+<strong class="title is-1"><%= @company.name %> <br></strong>
+<br>
+<h1 class="title is-4">Users</h1>
+<% @company.users.each do |user| %>
+    <%= link_to user.email, admin_user_path(user) %> <br>
+<% end %>

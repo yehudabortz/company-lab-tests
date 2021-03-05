@@ -8,6 +8,7 @@ class User < ApplicationRecord
     validates :first_name, :last_name, :email, presence: true
     validates :email, uniqueness: { case_sensitive: false }
 
+    scope :users_of_current_company, -> (company) {where("user_id = ?", company)}
 
 
 
