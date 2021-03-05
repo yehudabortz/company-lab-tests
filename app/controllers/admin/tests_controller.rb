@@ -26,6 +26,10 @@ class Admin::TestsController < ApplicationController
         set_test
     end
 
+    def edit
+        set_test
+    end
+
     private
 
     def has_company_admin_permissions?
