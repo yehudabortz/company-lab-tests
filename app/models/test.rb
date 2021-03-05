@@ -10,6 +10,9 @@ class Test < ApplicationRecord
     end
 
     def calculate_result
-        binding.pry
+        mma = self.mma
+        creatinine = self.creatinine * 10
+        result = mma / creatinine
+        self.final_result = result.round(2)
     end
 end

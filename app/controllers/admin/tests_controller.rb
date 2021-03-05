@@ -3,6 +3,8 @@ class Admin::TestsController < ApplicationController
     before_action  :has_company_admin_permissions?
     helper_method :has_company_admin_permissions?
 
+    # before_validation :perform_results_calculation, on: :update
+
     def index
         @tests = Test.all
     end
@@ -31,21 +33,31 @@ class Admin::TestsController < ApplicationController
     end
 
     def update
-        binding.pry
+        set_test
+        @test.mma = test_params[:mma]
+        @test.creatinine = test_params[:creatinine]
+        @test.calculate_result
+        @test.save
+        redirect_to admin_test_path(@test)
     end
 
     private
-
-    def has_company_admin_permissions?
-        redirect_to user_path(current_user), notice: "Restricted" unless logged_in? && current_user.super_admin
-    end
 
     def test_params
         params.require(:test).permit(:unique_test_id, :mma, :creatinine)
     end
 
+    def has_company_admin_permissions?
+        redirect_to user_path(current_user), notice: "Restricted" unless logged_in? && current_user.super_admin
+    end
+
+
     def set_test
         @test = Test.find_by(id: params[:id])
+    end
+
+    def perform_results_calculation
+        @test.calculate_result
     end
 
   end 

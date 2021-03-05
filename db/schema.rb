@@ -29,9 +29,9 @@ ActiveRecord::Schema.define(version: 2021_03_04_020111) do
 
   create_table "tests", force: :cascade do |t|
     t.integer "unique_test_id"
-    t.integer "mma"
-    t.integer "creatinine"
-    t.integer "final_result"
+    t.float "mma"
+    t.float "creatinine"
+    t.float "final_result"
     t.boolean "verified"
     t.integer "company_id"
     t.integer "lab_id"
