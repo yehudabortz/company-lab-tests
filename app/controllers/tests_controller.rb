@@ -33,13 +33,10 @@ class TestsController < ApplicationController
 
     def new_registration
         @test = Test.new
-        @test.build_user
-
     end
 
     def register
         if find_test_by_unique_id
-            binding.pry
             if !!current_user
                 @test.user = current_user
                 @test.save
@@ -56,15 +53,7 @@ class TestsController < ApplicationController
     private
 
     def test_params
-        params.require(:test).permit(:unique_test_id, :mma, :creatinine, :final_result, :verified, :user_attributes => [
-            :first_name,
-            :last_name,
-            :email,
-            :birthdate,
-            :gender,
-            :phone,
-            :dr_email
-        ])
+        params.require(:test).permit(:unique_test_id)
     end
 
     def find_test_by_unique_id

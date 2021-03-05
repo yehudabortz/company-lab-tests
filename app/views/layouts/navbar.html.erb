@@ -11,7 +11,7 @@
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
   
-        <%= link_to "Test Registration", new_test_path, class: "navbar-item" if logged_in? %>
+        <%= link_to "Test Registration", tests_registration_path, class: "navbar-item" if logged_in? %>
         <%= link_to "My Tests", tests_path, class: "navbar-item" if logged_in? %>
         <%= link_to "My Profile", user_path(current_user), class: "navbar-item" if logged_in? %>
         <%= link_to "New Company", new_company_path, class: "navbar-item" if !logged_in? %>

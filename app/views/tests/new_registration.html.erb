@@ -2,22 +2,5 @@
     <%= f.label "Unique Test ID" %>
     <%= f.text_field :unique_test_id %> <br>
 
-    <%= f.fields_for :user, @user do |user| %>
-        <%= user.label :first_name %>
-        <%= user.text_field :first_name %> <br>
-        <%= user.label :last_name %>
-        <%= user.text_field :last_name %> <br>
-        <%= user.label :email %>
-        <%= user.text_field :email %> <br>
-        <%= user.label :birthdate %>
-        <%= user.date_field :birthdate %> <br>
-        <%= user.label :gender %>
-        <%= user.select :gender, ['Male', 'Female', 'Prefer not to say', 'Other'], :prompt => 'Select Gender' %> <br>
-        <%= user.label :phone %>
-        <%= user.text_field :phone %> <br>
-        <%= user.label :dr_email %>
-        <%= user.text_field :dr_email %> <br>
-    <% end %>
-
     <%= f.submit "Register" %> <br>
 <% end %>
