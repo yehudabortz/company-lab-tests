@@ -18,13 +18,11 @@ class Admin::TestsController < ApplicationController
         if @test.save
             redirect_to admin_test_path(@test)
         else
-            redirect_to new_admin_test_path, notice: 'Unable to create new test'
+            redirect_to new_admin_test_path, notice: @test.errors.full_messages
         end
     end
 
     def show
-        # binding.pry
-        # raise params.inspect
         set_test
     end
 
