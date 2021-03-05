@@ -1,4 +1,8 @@
 class CompaniesController < ApplicationController
+    before_action :verify_user_company_relationship, only: [:show. :edit]
+
+    def index
+    end
 
     def new
         @company = Company.new
@@ -17,6 +21,8 @@ class CompaniesController < ApplicationController
             if @company.save && @user.save
                 @company.users << @user
                 set_user
+                set_company
+                binding.pry
                 redirect_to @company
             else
                 flash[:message] = @company.errors.full_messages
@@ -25,14 +31,14 @@ class CompaniesController < ApplicationController
         end
     end
     
-    def index
-    end
-    
     def show
+        # if 
         @company = Company.find_by(id: params[:id])
     end
     
     def edit
+        @company = Company.find_by(id: params[:id])
+        @user = User.find_by(current_user)
     end
     
     def update
@@ -53,6 +59,10 @@ class CompaniesController < ApplicationController
             :super_admin,
             :can_edit,
             ])
+    end
+
+    def verify_user_company_relationship
+        return redirect_to root_path, notice: "Forbidden" unless current_user.company == current_company 
     end
 
 end
