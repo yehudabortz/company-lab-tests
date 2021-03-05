@@ -31,7 +31,6 @@ class CompaniesController < ApplicationController
     end
     
     def show
-        # if 
         @company = Company.find_by(id: params[:id])
     end
     

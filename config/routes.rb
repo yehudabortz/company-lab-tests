@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   namespace :admin do 
     resources :tests
     resources :labs
+    resources :users
   end
   # namespace :company do 
   #   resources :users

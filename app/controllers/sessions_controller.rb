@@ -7,9 +7,12 @@ class SessionsController < ApplicationController
     
     def create
         @user = User.find_by(email: session_params[:email])
-        # return redirect_to login_path unless @user.authenticate(session_params[:password])
         set_user
-        redirect_to @user
+        if admin?
+            redirect_to admin_user_path(@user)
+        else
+            redirect_to @user
+        end
       end
     
     def destroy

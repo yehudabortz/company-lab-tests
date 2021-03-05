@@ -1,0 +1,3 @@
+<%= current_user.first_name %>
+<h2>You are a super admin <strong><%= current_user.super_admin %></strong></h2>
+<%= link_to current_user.company.name, company_path(current_user.company) if current_user.company %>

@@ -1,4 +1,4 @@
-class Admin::TestsController < ApplicationController
+class Admin::TestsController < Admin::BaseAdminController 
     before_action  :require_login
     before_action  :has_company_admin_permissions?
     helper_method :has_company_admin_permissions?
@@ -6,7 +6,7 @@ class Admin::TestsController < ApplicationController
     # before_validation :perform_results_calculation, on: :update
 
     def index
-        @tests = Test.all
+        @tests = Test.belonging_to_current_company(current_company)
     end
 
     def new
@@ -25,15 +25,15 @@ class Admin::TestsController < ApplicationController
     end
 
     def show
-        set_test
+        find_test
     end
 
     def edit
-        set_test
+        find_test
     end
 
     def update
-        set_test
+        find_test
         @test.mma = test_params[:mma]
         @test.creatinine = test_params[:creatinine]
         @test.calculate_result
@@ -52,7 +52,7 @@ class Admin::TestsController < ApplicationController
     end
 
 
-    def set_test
+    def find_test
         @test = Test.find_by(id: params[:id])
     end
 

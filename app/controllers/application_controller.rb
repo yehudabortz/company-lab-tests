@@ -24,4 +24,8 @@ class ApplicationController < ActionController::Base
    def require_login
       return redirect_to login_path unless logged_in?
    end
+
+   def admin?
+      current_user.super_admin || current_user.belongs_to_lab || current_user.belongs_to_company
+   end
 end
