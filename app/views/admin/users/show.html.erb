@@ -1,4 +1,5 @@
 <%= current_user.first_name %>
 <h2>You are a super admin <strong><%= current_user.super_admin %></strong></h2>
-<%= link_to current_user.company.name, company_path(current_user.company) if current_user.company %>
+<%= link_to current_user.company.name, company_path(current_user.company) if current_user.company %> <br>
+<%= link_to "Add User", new_admin_user_path, class: "button is-link is-small" if current_user.super_admin %>
 

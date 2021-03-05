@@ -38,8 +38,19 @@ class TestsController < ApplicationController
     end
 
     def register
-        @test = Test.find_by(test_params[:unique_test_id])
-        binding.pry
+        if find_test_by_unique_id
+            binding.pry
+            if !!current_user
+                @test.user = current_user
+                @test.save
+                redirect_to user_test_path(current_user, @test)
+            else
+                redirect_to root_path
+            end
+        else
+            redirect_to root_path, notic: "Unable to register test. "
+        end
+
     end
 
     private
@@ -56,5 +67,8 @@ class TestsController < ApplicationController
         ])
     end
 
+    def find_test_by_unique_id
+        @test = Test.find_by(unique_test_id: test_params[:unique_test_id])
+    end
 
 end

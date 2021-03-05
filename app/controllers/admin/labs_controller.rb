@@ -1,4 +1,5 @@
 class Admin::LabsController < ApplicationController
+    # before_action :require_login
 
     def new
     end

@@ -2,6 +2,7 @@ class Test < ApplicationRecord
     belongs_to :company
     belongs_to :lab, optional: true
     belongs_to :user, optional: true
+    accepts_nested_attributes_for :user
 
     validates :unique_test_id, uniqueness: true
 

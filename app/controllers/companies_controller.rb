@@ -24,6 +24,7 @@ class CompaniesController < ApplicationController
                 set_user
                 redirect_to @company
             else
+                binding.pry
                 flash[:message] = @company.errors.full_messages
                 redirect_to new_company_path
             end

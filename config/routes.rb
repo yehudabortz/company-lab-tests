@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get '/tests/registration', to: 'tests#new_registration'
+  post '/tests/registration', to: 'tests#register'
+
   resources :users, :tests, :companies
   # resources :users, :tests, :labs, :companies
 
@@ -12,12 +15,6 @@ Rails.application.routes.draw do
     resources :labs
     resources :users
   end
-  # namespace :company do 
-  #   resources :users
-  # end
-
-  # nested routes for signup of certain company
-  # /companies/1/users/signup
 
 
   get '/signup', to: 'users#new'
