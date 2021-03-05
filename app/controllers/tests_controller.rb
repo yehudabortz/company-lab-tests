@@ -1,5 +1,5 @@
 class TestsController < ApplicationController
-
+    before_action :require_login
     def index
         @tests = Test.belonging_to_user(current_user)
     end
