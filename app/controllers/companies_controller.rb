@@ -60,7 +60,7 @@ class CompaniesController < ApplicationController
     end
 
     def verify_user_company_relationship
-        return redirect_to root_path, notice: "Forbidden" unless current_user.company == current_company 
+        return redirect_to root_path, notice: "Forbidden" unless current_user.company_id == params[:id].to_i 
     end
 
 end
