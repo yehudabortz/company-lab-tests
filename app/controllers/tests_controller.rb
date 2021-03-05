@@ -38,13 +38,14 @@ class TestsController < ApplicationController
     end
 
     def register
+        @test = Test.find_by(test_params[:unique_test_id])
         binding.pry
     end
 
     private
 
     def test_params
-        params.require(:test).permit(:unique_test_id, :mma, :creatinine, :final_result, :verified, user_attributes: => [
+        params.require(:test).permit(:unique_test_id, :mma, :creatinine, :final_result, :verified, :user_attributes => [
             :first_name,
             :last_name,
             :email,
