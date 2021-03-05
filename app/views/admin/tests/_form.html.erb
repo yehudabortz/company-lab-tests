@@ -1,26 +1,6 @@
 <%= form_for @test, :url => url_for(:controller => 'admin/tests', :action => 'create') do |f| %>
     <%= f.label :unique_test_id %>
-    <%= f.text_field :unique_test_id, :disabled => true  %> <br>
-    <%= f.label :mma %>
-    <%= f.text_field :mma %> <br>
-    <%= f.label :creatinine %>
-    <%= f.text_field :creatinine %> <br>
-    <%= f.label :final_result %>
-    <%= f.text_field :final_result %> <br>
-    <%= f.label :verified %>
-    <%= f.check_box :verified %> <br>
+    <%= f.text_field :unique_test_id, :readonly => true %> <br>
     <%= f.submit %> <br>
-<% end %>
-<%= form_with model: @test, controller: 'admin/tests', action: 'create' do |f| %>
-    <%= f.label :unique_test_id %>
-    <%= f.text_field :unique_test_id, :disabled => true  %> <br>
-    <%= f.label :mma %>
-    <%= f.text_field :mma %> <br>
-    <%= f.label :creatinine %>
-    <%= f.text_field :creatinine %> <br>
-    <%= f.label :final_result %>
-    <%= f.text_field :final_result %> <br>
-    <%= f.label :verified %>
-    <%= f.check_box :verified %> <br>
-    <%= f.submit %> <br>
-<% end %>
+    <% end %>
+    

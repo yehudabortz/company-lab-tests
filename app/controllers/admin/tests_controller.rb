@@ -1,7 +1,6 @@
 class Admin::TestsController < ApplicationController
     before_action  :require_login
     before_action  :has_company_admin_permissions?
-
     helper_method :has_company_admin_permissions?
 
     def index
@@ -14,7 +13,19 @@ class Admin::TestsController < ApplicationController
     end
 
     def create
-        binding.pry
+        @test = Test.new(test_params)
+        @test.company = current_company
+        if @test.save
+            redirect_to admin_test_path(@test)
+        else
+            redirect_to new_admin_test_path, notice: 'Unable to create new test'
+        end
+    end
+
+    def show
+        # binding.pry
+        # raise params.inspect
+        set_test
     end
 
     private
@@ -24,7 +35,11 @@ class Admin::TestsController < ApplicationController
     end
 
     def test_params
-        params.require(:test).permit(:unique_test_id, :mma, :creatinine, :final_result, :verified)
+        params.require(:test).permit(:unique_test_id)
+    end
+
+    def set_test
+        @test = Test.find_by(id: params[:id])
     end
 
   end 
