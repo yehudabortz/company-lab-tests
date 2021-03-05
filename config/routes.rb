@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   resources :users, :tests, :companies
   # resources :users, :tests, :labs, :companies
 
+  resources :users do
+    resources :tests
+  end
 
 
   namespace :admin do 

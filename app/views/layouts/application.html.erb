@@ -12,7 +12,12 @@
   </head>
 
   <body>
-    <%= render template: 'layouts/navbar' %>
+    <% if admin? %>
+      <%= render template: 'layouts/admin/navbar' %>
+    <% else %>
+      <%= render template: 'layouts/navbar' %>
+    <% end %>
+    
     <%= render 'layouts/alert' %>
     <%= button_to "Login with google", auth_google_oauth2_path %>
 

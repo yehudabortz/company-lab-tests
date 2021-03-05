@@ -1,12 +1,16 @@
 class ApplicationController < ActionController::Base
    protect_from_forgery with: :exception
-   helper_method :current_user, :logged_in?, :current_company
+   helper_method :current_user, :logged_in?, :current_company, :admin?
 
    
    private
 
    def set_user
      session[:user_id] = @user.id 
+   end
+
+   def find_user
+    @user = User.find_by(id: params[:id])
    end
 
    def current_company
@@ -26,6 +30,8 @@ class ApplicationController < ActionController::Base
    end
 
    def admin?
-      current_user.super_admin || current_user.belongs_to_lab || current_user.belongs_to_company
+      if !current_user.nil?
+         current_user.super_admin || current_user.belongs_to_lab || current_user.belongs_to_company
+      end
    end
 end

@@ -10,7 +10,7 @@ class Admin::UsersController < ApplicationController
     end
 
     def show
-        set_user
+        find_user
     end
 
     def edit

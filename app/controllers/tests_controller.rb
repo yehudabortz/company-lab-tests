@@ -1,6 +1,9 @@
 class TestsController < ApplicationController
 
-    
+    def index
+        @tests = Test.belonging_to_user(current_user)
+    end
+
     def new
         @test = Test.new
 
@@ -13,9 +16,6 @@ class TestsController < ApplicationController
         else
             render "new"
         end
-    end
-
-    def index
     end
 
     def show

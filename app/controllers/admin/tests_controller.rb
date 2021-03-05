@@ -1,9 +1,7 @@
-class Admin::TestsController < Admin::BaseAdminController 
+class Admin::TestsController < ApplicationController
     before_action  :require_login
-    before_action  :has_company_admin_permissions?
+    before_action  :has_company_admin_permissions?, except: [:show]
     helper_method :has_company_admin_permissions?
-
-    # before_validation :perform_results_calculation, on: :update
 
     def index
         @tests = Test.belonging_to_current_company(current_company)
@@ -51,13 +49,8 @@ class Admin::TestsController < Admin::BaseAdminController
         redirect_to user_path(current_user), notice: "Restricted" unless logged_in? && current_user.super_admin
     end
 
-
     def find_test
         @test = Test.find_by(id: params[:id])
     end
-
-    def perform_results_calculation
-        @test.calculate_result
-    end
-
+    
   end 

@@ -6,6 +6,7 @@ class Test < ApplicationRecord
     validates :unique_test_id, uniqueness: true
 
     scope :belonging_to_current_company, -> (company) {where("company_id = ?", company)}
+    scope :belonging_to_user, -> (user) {where("user_id = ?", user)}
 
     def self.generate_unique_test_id
         SecureRandom.random_number(99999)

@@ -11,7 +11,6 @@
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
   
-        <%= link_to "Test Registration", new_test_path, class: "navbar-item" if logged_in? %>
         <%= link_to "My Profile", admin_user_path(current_user), class: "navbar-item" if logged_in? %>
         <%= link_to "New Test", new_admin_test_path, class: "navbar-item" if logged_in? %>
         <%= link_to "All Tests", admin_tests_path, class: "navbar-item" if logged_in? %>
@@ -21,7 +20,6 @@
           <a class="navbar-link">
             More
           </a>
-  
           <div class="navbar-dropdown">
             <a class="navbar-item">
               About
