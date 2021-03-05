@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-    before_action :verify_user_company_relationship, only: [:show. :edit]
+    before_action :verify_user_company_relationship, only: [:show, :edit]
 
     def index
     end
@@ -18,11 +18,10 @@ class CompaniesController < ApplicationController
             @user = User.new(company_params[:user])
             @user.super_admin = true
             @user.super_admin = true
+            @company.users << @user
+            @user.company = @company
             if @company.save && @user.save
-                @company.users << @user
                 set_user
-                set_company
-                binding.pry
                 redirect_to @company
             else
                 flash[:message] = @company.errors.full_messages

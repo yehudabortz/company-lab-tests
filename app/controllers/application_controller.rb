@@ -4,17 +4,13 @@ class ApplicationController < ActionController::Base
 
    
    private
-   
-   def set_company
-     session[:company_id] = @company.id 
-   end
 
    def set_user
      session[:user_id] = @user.id 
    end
 
    def current_company
-      Company.find_by(id: session[:company_id])
+    current_user.company
    end
 
    def current_user
