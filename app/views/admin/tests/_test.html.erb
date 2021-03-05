@@ -1,4 +1,6 @@
-<%= test.unique_test_id %> 
-<%= test.mma %>
-<%= test.creatinine %>
-<%= test.final_result %> <br>
+<tr>
+    <td><%= link_to test.unique_test_id, admin_test_path(test) %></td>
+    <td><%= test.mma %></td>
+    <td><%= test.creatinine %></td>
+    <td><%= test.final_result %></td>
+</tr>
