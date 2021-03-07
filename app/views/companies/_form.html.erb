@@ -2,7 +2,7 @@
     <%= f.label :company_name %>
     <%= f.text_field :name %><br>
     <%= f.fields_for @user do |f| %>
-       <%= render partial: 'users/nested_user_fields', locals: {f: f} %>
+        <%= render partial: 'users/base_user_form', locals: {f: f} %>
     <% end %>
 
     <%= f.submit %>

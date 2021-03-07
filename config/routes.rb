@@ -2,17 +2,15 @@ Rails.application.routes.draw do
   get '/tests/registration', to: 'tests#new_registration'
   post '/tests/registration', to: 'tests#register'
 
-  resources :users, :tests, :companies
+  resources :users, :tests, :companies, :labs
   # resources :users, :tests, :labs, :companies
 
   resources :users do
     resources :tests
   end
-
-
+  
   namespace :admin do 
     resources :tests
-    resources :labs
     resources :users
   end
 

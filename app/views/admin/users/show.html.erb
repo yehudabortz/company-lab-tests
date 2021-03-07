@@ -3,3 +3,4 @@
 <%= link_to current_user.company.name, company_path(current_user.company) if current_user.company %> <br>
 <%= link_to "Add User", new_admin_user_path, class: "button is-link is-small" if current_user.super_admin %>
 
+
