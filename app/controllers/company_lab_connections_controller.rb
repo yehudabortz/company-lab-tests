@@ -4,13 +4,22 @@ class CompanyLabConnectionsController < ApplicationController
 
 
     def new
-        @user = User.new
+        @company_lab_connection = CompanyLabConnection.new
+        @user = User.new # email used to find and associate company and lab
     end
-
+    
     def create
-        @user = User.create(user_params)
-        set_user
-        redirect_to @user
+        @company_lab_connection = CompanyLabConnection.new
+        if user = User.find_by(email: company_lab_connection_params[:user][:email])
+            @company_lab_connection.company = current_company
+            @company_lab_connection.lab = user.lab
+            @company_lab_connection.pending = true
+            @company_lab_connection.save
+            binding.pry
+            redirect_to admin_user_path(current_user), notice: "Connection Pending"
+        else
+            redirect_to admin_user_path(current_user), notice: "Unable to connect"
+        end
     end
 
     def index
@@ -32,8 +41,10 @@ class CompanyLabConnectionsController < ApplicationController
 
     private 
 
-    def user_params
-        params.require(:user).permit(:first_name, :last_name, :password, :email, :birthdate, :gender, :phone, :dr_email)
+    def company_lab_connection_params
+        params.require(:company_lab_connection).permit(user: [
+            :email
+        ])
     end
 
 end

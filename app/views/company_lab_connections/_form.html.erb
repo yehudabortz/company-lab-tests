@@ -1,0 +1,8 @@
+<%= form_for @company_lab_connection do |f| %>
+
+    <%= f.fields_for @user do |user_form| %>
+        <%= user_form.label :email %>
+        <%= user_form.text_field :email %>
+    <% end %>
+    <%= f.submit %>
+<% end %>
