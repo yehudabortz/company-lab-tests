@@ -1,6 +1,7 @@
 class Admin::TestsController < ApplicationController
     before_action :require_login
     before_action :has_access_to_company_tests?
+    before_action :is_lab_super_admin?, only: [:edit, :update]
     before_action :is_company_super_admin?, only: [:new, :create]
 
 
