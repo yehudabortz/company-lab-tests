@@ -37,6 +37,7 @@ class TestsController < ApplicationController
     end
 
     def new_registration
+        redirect_to edit_user_path(current_user), notice: "Complete your profile to register a test." unless customer_has_provided_all_info
         @test = Test.new
     end
 
