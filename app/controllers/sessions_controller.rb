@@ -14,6 +14,8 @@ class SessionsController < ApplicationController
                 else
                     redirect_to @user
                 end
+            else
+                redirect_to login_path, notice: "Unable to login. Please make sure your email and password are correct."
             end
         else
             redirect_to login_path, notice: "Try again. Email or password doese not exist."
