@@ -1,10 +1,8 @@
 class Admin::TestsController < ApplicationController
     before_action :require_login
-    before_action :has_access_to_tests?
+    before_action :has_access_to_company_tests?
     before_action :is_company_super_admin?, only: [:new, :create]
-    before_action only:[:show, :edit, :update, :destroy] do
-        require_test_ownership(test_belongs_to_company)
-    end
+
 
     helper_method :has_company_admin_permissions?, :require_test_ownership
 

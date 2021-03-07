@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 2021_03_07_153104) do
     t.string "gender"
     t.string "email"
     t.string "dr_email"
-    t.integer "phone"
+    t.string "phone"
     t.boolean "is_customer", default: false
     t.boolean "lab_super_admin", default: false
     t.boolean "belongs_to_lab", default: false

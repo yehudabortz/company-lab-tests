@@ -6,5 +6,8 @@ class Company < ApplicationRecord
 
     validates :name, uniqueness: { case_sensitive: false }
 
+    def test_ids
+        self.tests.ids
+    end
 
 end

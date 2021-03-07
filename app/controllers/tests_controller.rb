@@ -1,5 +1,6 @@
 class TestsController < ApplicationController
     before_action :require_login
+    before_action :can_register_test?
     before_action only:[:show, :edit, :update, :destroy] do
         require_test_ownership(test_belongs_to_user)
     end

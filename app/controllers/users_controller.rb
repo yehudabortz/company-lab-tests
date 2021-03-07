@@ -8,9 +8,15 @@ class UsersController < ApplicationController
     end
 
     def create
-        @user = User.create(user_params)
-        set_user
-        redirect_to @user
+        @user = User.new(user_params)
+        set_customer_permissions
+        if @user.save
+            set_user
+            redirect_to @user
+        else
+            redirect_to root_path, notice: "#{@user.errors.full_messages.join(" ")}"
+        end
+
     end
 
     def index
@@ -33,7 +39,11 @@ class UsersController < ApplicationController
     private 
 
     def user_params
-        params.require(:user).permit(:first_name, :last_name, :password, :email, :birthdate, :gender, :phone, :dr_email)
+        params.require(:user).permit(:first_name, :last_name, :password_digest, :email, :birthdate, :gender, :phone, :dr_email)
+    end
+
+    def set_customer_permissions
+        @user.is_customer = true
     end
 
 end

@@ -18,6 +18,7 @@ class User < ApplicationRecord
             u.first_name = auth[:info][:first_name]
             u.last_name = auth[:info][:last_name]
             u.email = auth[:info][:email]
+            u.is_customer = true
             u.password = SecureRandom.hex(16)
         end
     end

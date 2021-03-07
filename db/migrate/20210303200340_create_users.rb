@@ -8,7 +8,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :gender
       t.string :email
       t.string :dr_email
-      t.integer :phone
+      t.string :phone
 
       t.boolean :is_customer, :default => false
       t.boolean :lab_super_admin, :default => false
