@@ -11,11 +11,7 @@ class Admin::TestsController < ApplicationController
         if current_user.belongs_to_company
             @tests = Test.belonging_to_current_company(current_company)
         elsif current_user.belongs_to_lab
-            @tests = []
-            Lab.accepted_company_connections(current_lab).each do |company| 
-                @tests << Test.belonging_to_current_company(company)
-            end
-            @tests = @tests.flatten
+            @tests = current_lab.all_tests_through_company_connections(current_lab)
         end
     end
 
