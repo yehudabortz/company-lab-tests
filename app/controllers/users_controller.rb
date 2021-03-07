@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :user_is_current_user
+    before_action :user_is_current_user, only: [:show, :edit, :update]
     # skip_before_action :require_login, only: [:new] 
 
 
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     private 
 
     def user_params
-        params.require(:user).permit(:first_name, :last_name, :password_digest, :email, :birthdate, :gender, :phone, :dr_email)
+        params.require(:user).permit(:first_name, :last_name, :password, :email, :birthdate, :gender, :phone, :dr_email)
     end
 
     def set_customer_permissions

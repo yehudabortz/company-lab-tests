@@ -7,11 +7,13 @@ class SessionsController < ApplicationController
     
     def create
         if @user = User.find_by(email: session_params[:email])
-            set_user
-            if admin?
-                redirect_to admin_user_path(@user)
-            else
-                redirect_to @user
+            if @user && @user.authenticate(session_params[:password])
+                set_user
+                if admin?
+                    redirect_to admin_user_path(@user)
+                else
+                    redirect_to @user
+                end
             end
         else
             redirect_to login_path, notice: "Try again. Email or password doese not exist."

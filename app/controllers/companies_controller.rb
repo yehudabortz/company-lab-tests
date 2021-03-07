@@ -48,7 +48,7 @@ class CompaniesController < ApplicationController
             :first_name, 
             :last_name, 
             :email, 
-            :password_digest,
+            :password,
             :belongs_to_company,
             :super_admin,
             :can_edit,
