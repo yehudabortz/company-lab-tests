@@ -5,6 +5,10 @@
     <%= f.text_field :mma %> <br>
     <%= f.label :creatinine %>
     <%= f.text_field :creatinine %> <br>
+    <% if current_lab %>
+        <%= f.label :verified %>
+        <%= f.check_box :verified %> <br>
+    <% end %>
     <%= f.submit %> <br>
 <% end %>
 

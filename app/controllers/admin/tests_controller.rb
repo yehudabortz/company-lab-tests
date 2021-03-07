@@ -4,6 +4,7 @@ class Admin::TestsController < ApplicationController
     before_action :is_company_super_admin?, only: [:new, :create]
 
 
+
     helper_method :has_company_admin_permissions?, :require_test_ownership
 
     def index
@@ -39,17 +40,20 @@ class Admin::TestsController < ApplicationController
 
     def update
         find_test
-        @test.mma = test_params[:mma]
-        @test.creatinine = test_params[:creatinine]
-        @test.calculate_result
-        @test.save
-        redirect_to admin_test_path(@test)
+        @test.update(test_params)
+        if @test.update(test_params)
+            @test.calculate_result
+            @test.save
+            redirect_to admin_test_path(@test)
+        else
+            redirect_to admin_test_path(@test), notice: display_model_errors
+        end
     end
 
     private
 
     def test_params
-        params.require(:test).permit(:unique_test_id, :mma, :creatinine)
+        params.require(:test).permit(:unique_test_id, :mma, :creatinine, :verified)
     end
 
 
