@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    # before_action :require_login
+    before_action :user_is_current_user
     # skip_before_action :require_login, only: [:new] 
 
 
