@@ -1,5 +1,5 @@
 class LabsController < ApplicationController
-    # before_action :require_login
+    before_action :require_login, except: [:new, :create]
 
     def new
         @lab = Lab.new
@@ -23,6 +23,7 @@ class LabsController < ApplicationController
     end
 
     def show
+        find_lab
     end
 
     def edit
@@ -43,5 +44,9 @@ class LabsController < ApplicationController
             :email,
             :password_digest
             ])
+    end
+
+    def find_lab
+        @lab = Lab.find_by(id: params[:id])
     end
 end
