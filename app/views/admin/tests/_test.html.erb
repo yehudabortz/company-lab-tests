@@ -1,8 +1,10 @@
 <tr>
     <td><%= link_to_test_show_page(test) %></td>
-    <td><%= test.mma %></td>
-    <td><%= test.creatinine %></td>
-    <td><%= test.final_result %></td>
-    <td><%= test.verified %></td>
+    <% if admin? || test.verified %>
+        <td><%= test.mma %></td>
+        <td><%= test.creatinine %></td>
+        <td><%= test.final_result %></td>
+        <td><%= test.verified %></td>
+    <% end %>
 
 </tr>
