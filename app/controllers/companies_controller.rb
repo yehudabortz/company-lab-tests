@@ -32,7 +32,7 @@ class CompaniesController < ApplicationController
     end
     
     def show
-        @company = Company.find_by(id: params[:id])
+        find_company
         @users = User.users_of_current_company(@company)
     end
     
@@ -64,5 +64,11 @@ class CompaniesController < ApplicationController
     def verify_user_company_relationship
         return redirect_to root_path, notice: "Forbidden" unless current_user.company_id == params_id_integer
     end
+
+    def find_company
+        @company = Company.find_by(id: params[:id])
+    end
+
+
 
 end

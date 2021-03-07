@@ -12,7 +12,10 @@ class LabsController < ApplicationController
         @lab.users << @user
         @user.belongs_to_lab = true
         if @lab.save && @user.save
+            set_user
             redirect_to lab_path @lab
+        else
+            redirect_to login_path, notice: "Unable to create new lab."
         end
     end
 
