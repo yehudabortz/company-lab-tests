@@ -44,5 +44,9 @@ class ApplicationController < ActionController::Base
       params[:id].to_i
    end
 
+   def display_model_errors(instance)
+      instance.errors.full_messages.join(" ")
+   end
+
 end
 
