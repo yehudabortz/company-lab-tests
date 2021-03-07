@@ -1,5 +1,5 @@
 class CompanyLabConnectionsController < ApplicationController
-    before_action :require_login, :is_company_super_admin?
+    before_action :require_login, :is_admin?
 
 
 

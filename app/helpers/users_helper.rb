@@ -21,15 +21,19 @@ module UsersHelper
     end
 
     def has_access_to_company_tests?
-        redirect_to user_path(current_user), notice: "Restricted" unless logged_in? && current_user.super_admin || current_user.company.lab_super_admin
+        redirect_to user_path(current_user), notice: "Restricted" unless logged_in? && current_user.super_admin || current_user.lab_super_admin
     end
 
     def is_company_super_admin?
         redirect_to user_path(current_user), notice: "Restricted" unless logged_in? && current_user.super_admin 
     end
 
-    def has_lab_admin_permissions?
+    def is_lab_super_admin?
         redirect_to user_path(current_user), notice: "Restricted" unless logged_in? && current_user.lab_super_admin
+    end
+
+    def is_admin?
+        redirect_to user_path(current_user), notice: "Restricted" unless logged_in? && current_user.super_admin || current_user.lab_super_admin
     end
 
 
