@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
    include TestsHelper
    helper_method :current_user, :logged_in?, :current_company, :admin?
 
-   
    private
 
    def set_user
@@ -38,6 +37,10 @@ class ApplicationController < ActionController::Base
 
    def params_id_integer
       params[:id].to_i
+   end
+
+   def customer_has_provided_all_info
+      current_user.first_name != nil && current_user.last_name != nil && current_user.email != nil && current_user.birthdate != nil && current_user.gender!= nil && current_user.phone != nil
    end
 end
 
