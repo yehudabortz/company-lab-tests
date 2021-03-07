@@ -1,5 +1,7 @@
 class LabsController < ApplicationController
     before_action :require_login, except: [:new, :create]
+    before_action :verify_user_lab_relationship, only: [:show, :edit]
+
 
     def new
         @lab = Lab.new
@@ -48,5 +50,9 @@ class LabsController < ApplicationController
 
     def find_lab
         @lab = Lab.find_by(id: params[:id])
+    end
+
+    def verify_user_lab_relationship
+        return redirect_to root_path, notice: "Forbidden" unless current_user.lab_id == params_id_integer
     end
 end
