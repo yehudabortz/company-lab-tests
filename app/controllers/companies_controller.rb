@@ -10,24 +10,19 @@ class CompaniesController < ApplicationController
     end
 
     def create
-        if Company.find_by(name: company_params[:name]) || User.find_by(email: company_params[:user][:email])
-            flash[:message] = "Unable to create #{company_params[:name]}"
-            redirect_to new_company_path
+        @company = Company.new(name: company_params[:name])
+        @user = User.new(company_params[:user])
+        @user.super_admin = true
+        @user.super_admin = true
+        @company.users << @user
+        @user.company = @company
+        if @company.save && @user.save
+            set_user
+            redirect_to @company
         else
-            @company = Company.new(name: company_params[:name])
-            @user = User.new(company_params[:user])
-            @user.super_admin = true
-            @user.super_admin = true
-            @company.users << @user
-            @user.company = @company
-            if @company.save && @user.save
-                set_user
-                redirect_to @company
-            else
-                binding.pry
-                flash[:message] = @company.errors.full_messages
-                redirect_to new_company_path
-            end
+            binding.pry
+            flash[:message] = @company.errors.full_messages
+            redirect_to new_company_path
         end
     end
     

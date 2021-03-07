@@ -13,6 +13,10 @@ class ApplicationController < ActionController::Base
     @user = User.find_by(id: params[:id])
    end
 
+   def current_lab
+    current_user.lab
+   end
+
    def current_company
     current_user.company
    end
