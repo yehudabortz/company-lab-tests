@@ -1,0 +1,2 @@
+class CompanyLabConnection < ApplicationRecord
+end
