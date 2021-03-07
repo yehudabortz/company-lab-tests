@@ -1,9 +1,11 @@
 <%= form_for @lab do |f| %>
-    <%= f.label :lab_name %>
-    <%= f.text_field :name %><br>
+    <%= f.label :lab_name, class: "label" %>
+    <%= f.text_field :name, class: "input" %><br></br>
     <%= f.fields_for @user do |f| %>
        <%= render partial: 'users/base_user_form', locals: {f: f} %>
     <% end %>
 
-    <%= f.submit %>
+    <div class="control">
+        <%= f.submit class: "button is-link" %>
+    </div>
 <% end %>

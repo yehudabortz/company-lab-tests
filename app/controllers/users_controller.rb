@@ -26,11 +26,13 @@ class UsersController < ApplicationController
     end
 
     def edit
-        @user = User.find_by(id: params[:id])
+        find_user
     end
 
     def update
-
+        find_user
+        @user.update(user_params)
+        redirect_to @user
     end
 
     def destroy
@@ -44,6 +46,10 @@ class UsersController < ApplicationController
 
     def set_customer_permissions
         @user.is_customer = true
+    end
+
+    def find_user
+        @user = User.find_by(id: params[:id])
     end
 
 end

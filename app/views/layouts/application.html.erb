@@ -8,19 +8,22 @@
 
     <!-- <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <% if admin? %>
-      <%= render template: 'layouts/admin/navbar' %>
-    <% else %>
-      <%= render template: 'layouts/navbar' %>
-    <% end %>
-    
-    <%= render 'layouts/alert' %>
-    <%= button_to "Login with google", auth_google_oauth2_path %>
-
-    <%= yield %>
+    <div class="container">
+      <% if admin? %>
+        <%= render template: 'layouts/admin/navbar' %>
+      <% else %>
+        <%= render template: 'layouts/navbar' %>
+      <% end %>
+      
+      <%= render 'layouts/alert' %>
+      <%= button_to "Login with google", auth_google_oauth2_path %>
+  
+      <%= yield %>
+    </div>
   </body>
 </html>

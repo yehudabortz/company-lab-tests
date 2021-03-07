@@ -1,3 +1,20 @@
-<%= current_user.first_name %>
-<h2>You are a super admin <strong><%= current_user.super_admin %></strong></h2>
+
+<h2 class="title is-2"><%= current_user.first_name + " " + current_user.last_name %></h2>
+
+
 <%= link_to current_user.company.name, company_path(current_user.company) if current_user.company %>
+<aside class="menu">
+    <p class="menu-label">
+        tests
+    </p>
+    <ul class="menu-list">
+      <li><%= link_to "My Tests", tests_path %></li>
+      <li><%= link_to "Test Registration", tests_registration_path %></li>
+    </ul>
+    <p class="menu-label">
+        Profile
+    </p>
+    <ul class="menu-list">
+      <li><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
+    </ul>
+  </aside>
