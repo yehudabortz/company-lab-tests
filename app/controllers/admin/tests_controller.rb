@@ -8,7 +8,15 @@ class Admin::TestsController < ApplicationController
     helper_method :has_company_admin_permissions?, :require_test_ownership
 
     def index
-        @tests = Test.belonging_to_current_company(current_company)
+        if current_user.belongs_to_company
+            @tests = Test.belonging_to_current_company(current_company)
+        elsif current_user.belongs_to_lab
+            @tests = []
+            Lab.accepted_company_connections(current_lab).each do |company| 
+                @tests << Test.belonging_to_current_company(company)
+            end
+            @tests = @tests.flatten
+        end
     end
 
     def new
@@ -50,7 +58,7 @@ class Admin::TestsController < ApplicationController
     end
 
     def has_company_admin_permissions?
-        redirect_to user_path(current_user), notice: "Restricted" unless logged_in? && current_user.super_admin
+        redirect_to user_path(current_user), notice: "Restricted" unless logged_in? && current_user.super_admin || current_user.lab_super_admin
     end
 
     def find_test

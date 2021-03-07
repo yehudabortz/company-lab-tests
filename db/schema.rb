@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2021_03_07_153104) do
     t.string "dr_email"
     t.integer "phone"
     t.boolean "is_customer", default: false
+    t.boolean "lab_super_admin", default: false
     t.boolean "belongs_to_lab", default: false
     t.boolean "belongs_to_company", default: false
     t.boolean "super_admin", default: false

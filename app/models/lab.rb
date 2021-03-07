@@ -6,6 +6,11 @@ class Lab < ApplicationRecord
 
 
     def self.accepted_company_connections(current_lab)
-        current_lab.company_lab_connections.where(accepted: true)
+        connections = current_lab.company_lab_connections.where(accepted: true)
+        Company.find(
+            connections.map do |connection|
+                connection.company_id
+            end
+        )
     end
 end

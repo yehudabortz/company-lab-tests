@@ -9,7 +9,6 @@ class Admin::UsersController < ApplicationController
         @user = User.new(user_params)
         @user.company = current_company
         @user.belongs_to_company = true
-        binding.pry
         if @user.save
             redirect_to company_path(current_user)
         else

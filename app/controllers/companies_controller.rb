@@ -13,14 +13,13 @@ class CompaniesController < ApplicationController
         @company = Company.new(name: company_params[:name])
         @user = User.new(company_params[:user])
         @user.super_admin = true
-        @user.super_admin = true
+        @user.belongs_to_company = true
         @company.users << @user
         @user.company = @company
         if @company.save && @user.save
             set_user
             redirect_to @company
         else
-            binding.pry
             flash[:message] = @company.errors.full_messages
             redirect_to new_company_path
         end

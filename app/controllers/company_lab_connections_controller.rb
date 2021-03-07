@@ -15,7 +15,6 @@ class CompanyLabConnectionsController < ApplicationController
             @company_lab_connection.lab = user.lab
             @company_lab_connection.pending = true
             @company_lab_connection.save
-            binding.pry
             redirect_to admin_user_path(current_user), notice: "Connection Pending"
         else
             redirect_to admin_user_path(current_user), notice: "Unable to connect"
