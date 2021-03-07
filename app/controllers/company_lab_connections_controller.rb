@@ -1,6 +1,6 @@
 class CompanyLabConnectionsController < ApplicationController
-    # before_action :require_login
-    # skip_before_action :require_login, only: [:new] 
+    before_action :require_login, :is_company_super_admin?
+
 
 
     def new
