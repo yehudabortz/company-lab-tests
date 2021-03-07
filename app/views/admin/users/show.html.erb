@@ -5,3 +5,6 @@
 <%= link_to "Add Lab", new_company_lab_connection_path, class: "button is-link is-small" if current_user.super_admin %>
 
 
+<%= render 'company_lab_connections/pending_connections' %>
+
+

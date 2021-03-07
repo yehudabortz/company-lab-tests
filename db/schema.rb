@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 2021_03_07_153104) do
     t.integer "company_id"
     t.integer "lab_id"
     t.boolean "pending", default: false
+    t.boolean "rejected", default: false
+    t.boolean "accepted", default: false
     t.boolean "completed", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

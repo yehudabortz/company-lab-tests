@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
    protect_from_forgery with: :exception
    include TestsHelper
-   helper_method :current_user, :logged_in?, :current_company, :admin?
+   helper_method :current_user, :logged_in?, :current_company, :current_lab, :admin?
 
    private
 

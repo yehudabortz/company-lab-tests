@@ -33,10 +33,17 @@ class CompanyLabConnectionsController < ApplicationController
     end
 
     def update
-
+        @company_lab_connection = find_company_lab_connection
+        @company_lab_connection.pending = false
+        @company_lab_connection.accepted = true
+        @company_lab_connection.completed = true
+        @company_lab_connection.save
+        redirect_to current_user, notice: "Connection succesful"
     end
-
+    
     def destroy
+        find_company_lab_connection.destroy
+        redirect_to current_user
     end
 
     private 
@@ -45,6 +52,10 @@ class CompanyLabConnectionsController < ApplicationController
         params.require(:company_lab_connection).permit(user: [
             :email
         ])
+    end
+
+    def find_company_lab_connection
+        @company_lab_connection = CompanyLabConnection.find_by(id: params[:id])
     end
 
 end
