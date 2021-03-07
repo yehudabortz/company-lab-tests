@@ -16,7 +16,6 @@ class Lab < ApplicationRecord
     end
 
     def all_tests_through_company_connections(current_lab)
-        accepted_company_connections(current_lab)
         current_lab.accepted_company_connections(current_lab).flat_map do |company| 
             Test.belonging_to_current_company(company)
         end

@@ -62,7 +62,7 @@ class Admin::TestsController < ApplicationController
     end
 
     def test_belongs_to_company
-        if !current_company.nil?
+        if !current_company.nil? || !current_lab.nil? 
             current_user.company.test_ids.include?(params_id_integer)
         end
     end

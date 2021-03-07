@@ -32,7 +32,7 @@ class CompanyLabConnectionsController < ApplicationController
     end
 
     def update
-        find_company_lab_connection
+        connection = find_company_lab_connection
         update_connection_status_sucessful
         if @company_lab_connection.save
             redirect_to current_user, notice: "Connection succesful"
