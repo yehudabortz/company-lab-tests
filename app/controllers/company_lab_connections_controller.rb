@@ -33,18 +33,20 @@ class CompanyLabConnectionsController < ApplicationController
     end
 
     def update
-        @company_lab_connection = find_company_lab_connection
-        @company_lab_connection.pending = false
-        @company_lab_connection.accepted = true
-        @company_lab_connection.completed = true
-        @company_lab_connection.save
-        redirect_to current_user, notice: "Connection succesful"
+        find_company_lab_connection
+        update_connection_status_sucessful
+        if @company_lab_connection.save
+            redirect_to current_user, notice: "Connection succesful"
+        else
+            redirect_to current_user, notice: "Unable to make connection"
+        end
     end
     
     def destroy
         find_company_lab_connection.destroy
         redirect_to current_user
     end
+    
 
     private 
 
@@ -56,6 +58,12 @@ class CompanyLabConnectionsController < ApplicationController
 
     def find_company_lab_connection
         @company_lab_connection = CompanyLabConnection.find_by(id: params[:id])
+    end
+
+    def update_connection_status_sucessful
+        @company_lab_connection.pending = false
+        @company_lab_connection.accepted = true
+        @company_lab_connection.completed = true
     end
 
 end
