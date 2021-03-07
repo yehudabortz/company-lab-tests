@@ -12,7 +12,7 @@ class LabsController < ApplicationController
         @lab = Lab.new(name: lab_params[:name])
         @user = User.new(lab_params[:user])
         @lab.users << @user
-        @user.belongs_to_lab = true
+        set_new_lab_super_admin
         if @lab.save && @user.save
             set_user
             redirect_to lab_path @lab
@@ -54,5 +54,10 @@ class LabsController < ApplicationController
 
     def verify_user_lab_relationship
         return redirect_to root_path, notice: "Forbidden" unless current_user.lab_id == params_id_integer
+    end
+
+    def set_new_lab_super_admin
+        @user.belongs_to_lab = true
+        @user.lab_super_admin = true
     end
 end
