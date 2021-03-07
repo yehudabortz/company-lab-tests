@@ -1,6 +1,6 @@
 class Admin::TestsController < ApplicationController
     before_action :require_login
-    before_action :has_company_admin_permissions?, except: [:show]
+    before_action :has_access_to_tests?, except: [:show]
     before_action only:[:show, :edit, :update, :destroy] do
         require_test_ownership(test_belongs_to_company)
     end
@@ -53,16 +53,13 @@ class Admin::TestsController < ApplicationController
         params.require(:test).permit(:unique_test_id, :mma, :creatinine)
     end
 
-    def has_company_admin_permissions?
-        redirect_to user_path(current_user), notice: "Restricted" unless logged_in? && current_user.super_admin || current_user.lab_super_admin
-    end
 
     def find_test
         @test = Test.find_by(id: params[:id])
     end
 
     def test_belongs_to_company
-        if !current_company.nil? || !current_lab.nil? 
+        if !current_company.nil? 
             current_user.company.test_ids.include?(params_id_integer)
         end
     end
