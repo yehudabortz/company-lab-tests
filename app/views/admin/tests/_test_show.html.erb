@@ -35,7 +35,7 @@
         <% if lab_admin? %>
         <%= link_to "Update Test", edit_admin_test_path, class: "card-footer-item" %>
         <% elsif company_admin? %>
-        <%= link_to @test.user.first_name, user_path, class: "card-footer-item" if @test.user %>
+        <%= link_to "See All Of #{@test.user.first_name}'s Tests", user_tests_path(@test.user), class: "card-footer-item" if @test.user %>
         <% end %>
     </footer>
   </div>
