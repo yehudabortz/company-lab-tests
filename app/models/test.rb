@@ -1,5 +1,5 @@
 class Test < ApplicationRecord
-    belongs_to :company
+    belongs_to :company, optional: true
     belongs_to :lab, optional: true
     belongs_to :user, optional: true
 
@@ -20,5 +20,9 @@ class Test < ApplicationRecord
             result = mma / creatinine
             self.final_result = result.round(2)
         end
+    end
+
+    def readable_timestamp
+        self.updated_at.strftime("%B %d, %Y at %l:%M %p")
     end
 end

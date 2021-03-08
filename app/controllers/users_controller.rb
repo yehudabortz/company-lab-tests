@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :user_is_current_user, only: [:show, :edit, :update]
+    before_action :user_can_view_user, only: [:show, :edit, :update]
     # skip_before_action :require_login, only: [:new] 
 
 

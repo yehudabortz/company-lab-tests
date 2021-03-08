@@ -1,1 +1,4 @@
-<%= render :partial => "admin/tests/test", :collection => @tests %> 
+<% @tests.each do |test| %>
+   <%= link_to test.unique_test_id, test_path(test) %>
+
+<% end %>

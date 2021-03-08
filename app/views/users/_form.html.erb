@@ -6,7 +6,7 @@
     <%= f.label :email, class: "label" %>
     <%= f.text_field :email, class: "input" %>  <br></br>
     <%= f.label :birthdate, class: "label" %>
-    <%= f.date_field :birthdate, placeholder: "mm/dd/yyyy", class: "input" %>  <br></br>
+    <%= f.text_field :birthdate, placeholder: "mm/dd/yyyy", class: "input", type: "date" %>  <br></br>
     <%= f.label :gender, class: "label"%>
     <div class="select">
         <%= f.select :gender, ['Male', 'Female', 'Prefer not to say', 'Other'], :prompt => 'Select Gender' %> <br>
