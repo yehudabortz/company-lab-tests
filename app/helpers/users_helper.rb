@@ -1,5 +1,9 @@
 module UsersHelper
 
+    def only_user_can_view
+        redirect_to root_path, notice: "Restricted" unless logged_in? && current_user.id == params_id_integer
+    end
+
     def user_can_view_user
         redirect_to root_path, notice: "Restricted" unless logged_in? && current_user.id == params_id_integer || current_user.super_admin && current_user.company.company_customers(current_company).include?(User.find(params[:user_id] || params[:id]))
     end

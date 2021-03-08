@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :user_can_view_user, only: [:show, :edit, :update]
+    before_action :only_user_can_view, except: [:new, :create]
 
     def new
         @user = User.new
