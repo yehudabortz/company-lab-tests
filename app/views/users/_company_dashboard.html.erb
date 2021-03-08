@@ -6,6 +6,8 @@
       <li><%= link_to "Add User", new_admin_user_path %></li>
       <li><%= link_to "Labs", company_lab_connections_path %></li>
       <li><%= link_to "Users", admin_users_path %></li>
+      <li><%= link_to "Company", company_path(current_company) %></li>
+      <li><%= link_to "Edit Company", edit_company_path(current_company) %></li>
     </ul>
     <p class="menu-label">
         Tests
