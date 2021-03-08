@@ -1,12 +1,17 @@
 class TestsController < ApplicationController
     before_action :require_login
-    before_action :can_register_test?
-    before_action only:[:show, :edit, :update, :destroy] do
-        require_test_ownership(test_belongs_to_user)
-    end
+    before_action :can_register_test?, only: [:new]
+    before_action :user_can_view_user
+    # before_action only:[:show, :edit, :update, :destroy] do
+    #     require_test_ownership(test_belongs_to_user)
+    # end
 
     def index
-        @tests = Test.belonging_to_user(current_user)
+        if params[:user_id] && current_company
+            @tests = Test.belonging_to_user(User.find( params[:user_id])).where(company_id: current_company.id)
+        else
+            @tests = Test.belonging_to_user(current_user)
+        end
     end
 
     def new
@@ -72,7 +77,7 @@ class TestsController < ApplicationController
 
     def test_belongs_to_user
         if !current_user.nil?
-            current_user.test_ids.include?(params_id_integer)
+            user_can_view_user
         end
     end
 

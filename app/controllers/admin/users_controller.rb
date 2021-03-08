@@ -22,7 +22,6 @@ class Admin::UsersController < ApplicationController
 
     def show
         find_user
-        
     end
     
     def edit

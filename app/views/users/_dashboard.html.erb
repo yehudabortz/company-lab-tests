@@ -1,9 +1,7 @@
 <aside class="menu">
-  <% if current_lab %>
-      <%= render partial: 'users/lab_dashboard' %>
-    <% elsif current_company %>
-      <%= render partial: 'users/company_dashboard' %>
-    <% elsif current_user %>
+    <% if current_user %>
       <%= render partial: 'users/user_dashboard' %>
-  <% end %>
+    <% elsif current_lab %>
+      <%= render partial: 'users/lab_dashboard' %>
+    <% end %>
   </aside>
