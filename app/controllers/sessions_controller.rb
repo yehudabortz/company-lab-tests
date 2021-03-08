@@ -33,24 +33,20 @@ class SessionsController < ApplicationController
             set_user
             redirect_to @user
         else
-            flash[:message] = @user.errors.full_messages.join(", ")
+            flash[:message] = format_error(@user.errors.full_messages)
             redirect_to new_user_path
         end
     end
 
     private 
 
-
     def session_params
-        params.require(:email)
+        params.require(:user).permit(:first_name, :last_name, :password, :email)
     end
 
     def auth
         request.env['omniauth.auth']
     end
 
-    def session_params
-        params.require(:user).permit(:first_name, :last_name, :password, :email)
-    end
 
 end
