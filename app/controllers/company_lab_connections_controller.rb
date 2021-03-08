@@ -40,7 +40,7 @@ class CompanyLabConnectionsController < ApplicationController
         if @company_lab_connection.save
             redirect_to admin_user_path(current_user), notice: "Connection succesful"
         else
-            redirect_to admin_user_path(current_user), notice: "Unable to make connection"
+            redirect_to admin_user_path(current_user), notice: "Unable to connect"
         end
     end
     
