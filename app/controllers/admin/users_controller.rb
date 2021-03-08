@@ -12,11 +12,13 @@ class Admin::UsersController < ApplicationController
         if @user.save
             redirect_to company_path(current_user)
         else
-            redirect_to new_admin_user_path, notice: "Unable to create new user."
+            render 'new'
         end
     end
 
     def index
+        @users = current_company.company_customers(current_company)
+        binding.pry
     end
 
     def show

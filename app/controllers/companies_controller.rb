@@ -27,12 +27,12 @@ class CompaniesController < ApplicationController
     
     def show
         find_company
-        @users = User.users_of_current_company(@company)
+        @users = User.of_current_company(@company)
     end
     
     def edit
         @company = Company.find_by(id: params[:id])
-        @user = User.find_by(current_user)
+        @user = User.find_by(id: current_user.id)
     end
     
     def update
@@ -56,7 +56,7 @@ class CompaniesController < ApplicationController
     end
 
     def verify_user_company_relationship
-        return redirect_to root_path, notice: "Forbidden" unless current_user.company_id == params_id_integer
+        return redirect_to root_path, notice: "Forbidden" unless current_user.company_id == params_id_integer && current_user.super_admin
     end
 
     def find_company
