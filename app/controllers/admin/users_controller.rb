@@ -21,9 +21,11 @@ class Admin::UsersController < ApplicationController
 
     def show
         find_user
+        
     end
     
     def edit
+        binding.pry
     end
 
     def update
