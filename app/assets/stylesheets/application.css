@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+ .auth-button {
+     max-width: 180px;
+ }
