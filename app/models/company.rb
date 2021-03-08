@@ -18,7 +18,7 @@ class Company < ApplicationRecord
     end
 
     def company_customers(current_company)
-         Test.belonging_to_current_company(current_company).map {|t| t.user }.compact
+         Test.belonging_to_current_company(current_company).map {|t| t.user }.compact.uniq
     end
 
 
