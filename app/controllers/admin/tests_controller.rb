@@ -4,8 +4,6 @@ class Admin::TestsController < ApplicationController
     before_action :redirect_unless_lab_super_admin?, only: [:edit, :update]
     before_action :redirect_unless_company_super_admin?, only: [:new, :create]
 
-
-
     helper_method :has_company_admin_permissions?, :require_test_ownership
 
     def index
