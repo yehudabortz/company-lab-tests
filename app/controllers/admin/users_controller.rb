@@ -18,7 +18,6 @@ class Admin::UsersController < ApplicationController
 
     def index
         @users = current_company.company_customers(current_company)
-        binding.pry
     end
 
     def show
