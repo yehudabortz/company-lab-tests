@@ -1,8 +1,6 @@
 class CompanyLabConnectionsController < ApplicationController
     before_action :require_login, :is_admin?
 
-
-
     def new
         @company_lab_connection = CompanyLabConnection.new
         @user = User.new # email used to find and associate company and lab
@@ -22,6 +20,8 @@ class CompanyLabConnectionsController < ApplicationController
     end
 
     def index
+        find_company_lab_connection
+        @company_lab_connections = current_company.current_company_lab_connections #returns labs instances
     end
 
     def show

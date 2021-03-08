@@ -11,4 +11,11 @@ class Company < ApplicationRecord
         self.tests.ids
     end
 
+    def current_company_lab_connections
+        self.company_lab_connections.where(accepted: true).flat_map do |connection|
+            connection.lab
+        end 
+    end
+
+
 end
