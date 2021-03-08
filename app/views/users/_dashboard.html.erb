@@ -1,15 +1,34 @@
 <aside class="menu">
+  <% if company_admin? %>
     <p class="menu-label">
-        tests
+        Admin
+    </p>
+    <ul class="menu-list">
+      <li><%= link_to "Add Lab", new_company_lab_connection_path %></li>
+      <li><%= link_to "Add User", new_admin_user_path %></li>
+      <li><%= link_to "Labs", company_lab_connections_path %></li>
+      <li><%= link_to "Users", company_lab_connections_path %></li>
+    </ul>
+    <p class="menu-label">
+        Tests
+    </p>
+    <ul class="menu-list">
+      <li><%= link_to "All Tests", admin_tests_path %></li>
+      <li><%= link_to "New Test", new_admin_test_path %></li>
+    </ul>
+    <% else  %>
+    <p class="menu-label">
+      tests
     </p>
     <ul class="menu-list">
       <li><%= link_to "My Tests", tests_path %></li>
       <li><%= link_to "Test Registration", tests_registration_path %></li>
     </ul>
     <p class="menu-label">
-        Profile
+      Profile
     </p>
     <ul class="menu-list">
       <li><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
     </ul>
+  <% end  %>
   </aside>
