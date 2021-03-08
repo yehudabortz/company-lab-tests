@@ -8,7 +8,7 @@
     <div class="card-content">
       <div class="content">
         <ul>
-          <% if @test.verified %>
+          <% if @test.verified || current_lab || current_company %>
           <li>
             MMA <strong><%= @test.mma %></strong>
           </li>
