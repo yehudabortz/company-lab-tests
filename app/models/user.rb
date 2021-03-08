@@ -7,7 +7,9 @@ class User < ApplicationRecord
     belongs_to :lab, optional: true
     
     validates :first_name, :last_name, :email, presence: true
-    validates :email, uniqueness: { case_sensitive: false }
+    validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
+
+
 
     scope :is_customer, -> {where(is_customer: true)}
     scope :belong_to_company, -> {where(belongs_to_company: true)}
