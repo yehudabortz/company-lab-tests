@@ -20,8 +20,11 @@ class CompanyLabConnectionsController < ApplicationController
     end
 
     def index
-        find_company_lab_connection
-        @company_lab_connections = current_company.current_company_lab_connections #returns labs instances
+        if !current_lab.nil?
+            @company_lab_connections = CompanyLabConnection.current_company_lab_connections(current_lab)
+        elsif !current_company.nil?
+            @company_lab_connections = CompanyLabConnection.current_company_lab_connections(current_company)
+        end
     end
 
     def show
@@ -35,9 +38,9 @@ class CompanyLabConnectionsController < ApplicationController
         connection = find_company_lab_connection
         update_connection_status_sucessful
         if @company_lab_connection.save
-            redirect_to current_user, notice: "Connection succesful"
+            redirect_to admin_user_path(current_user), notice: "Connection succesful"
         else
-            redirect_to current_user, notice: "Unable to make connection"
+            redirect_to admin_user_path(current_user), notice: "Unable to make connection"
         end
     end
     

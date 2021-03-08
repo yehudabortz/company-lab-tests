@@ -22,7 +22,5 @@ class Test < ApplicationRecord
         end
     end
 
-    def readable_timestamp
-        self.updated_at.strftime("%B %d, %Y at %l:%M %p")
-    end
+
 end

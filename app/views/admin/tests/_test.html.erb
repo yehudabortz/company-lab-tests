@@ -5,6 +5,6 @@
         <td><%= test.creatinine %></td>
         <td><%= test.final_result %></td>
         <td><%= test.verified %></td>
-        <td><%= test.readable_timestamp %></td>
+        <td><%= readable_timestamp(test.updated_at) %></td>
     <% end %>
 </tr>

@@ -1,1 +1,25 @@
-<%= @company_lab_connections.inspect %>
+<div class="columns is-mobile">
+  <% @company_lab_connections.each do |connection| %>
+    <div class="column">
+        <div class="card">
+            <header class="card-header">
+              <p class="card-header-title">
+                <% if current_lab %>
+                  <%= connection.lab.name %>
+                <% elsif current_company %>
+                  <%= connection.company.name %>
+                <% end %>
+              </p>
+            </header>
+            <div class="card-content">
+              <div class="content">
+                <time datetime="2016-1-1">Connected on <%= readable_timestamp(connection.created_at) %></time>
+              </div>
+              </div>
+              <footer class="card-footer">
+                <%= link_to "delete", company_lab_connection_path(connection), class: "card-footer-item", method: 'delete' if company_admin? %>
+            </footer>
+          </div>
+        </div>
+    <% end %> 
+  </div>

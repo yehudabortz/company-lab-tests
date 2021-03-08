@@ -12,9 +12,7 @@ class Company < ApplicationRecord
     end
 
     def current_company_lab_connections
-        self.company_lab_connections.where(accepted: true).flat_map do |connection|
-            connection.lab
-        end 
+        self.company_lab_connections.where(accepted: true)
     end
 
 
