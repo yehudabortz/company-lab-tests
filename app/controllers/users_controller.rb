@@ -14,7 +14,7 @@ class UsersController < ApplicationController
             set_user
             redirect_to @user
         else
-            redirect_to root_path, notice: "#{display_model_errors(@user)}"
+            redirect_to signup_path, notice: "#{display_model_errors(@user)}"
         end
 
     end
