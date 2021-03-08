@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
    include TestsHelper
    include UsersHelper
 
+   def not_found
+      raise ActionController::RoutingError.new('Not Found')
+    end
+
    private
 
    def set_user
