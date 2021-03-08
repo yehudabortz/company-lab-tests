@@ -41,7 +41,11 @@ class ApplicationController < ActionController::Base
    end
 
    def params_id_integer
-      params[:id].to_i
+      if params[:id]
+         params[:id].to_i
+      else
+         params[:user_id].to_i
+      end
    end
 
    def display_model_errors(instance)
