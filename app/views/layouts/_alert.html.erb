@@ -13,6 +13,6 @@
 <% flash.each do |type, msg| %>
     <div class="notification is-info is-light">
         <button class="delete"></button>
-        <%= format_error(msg) %>
+        <%= msg  %>
     </div>
 <% end %>
