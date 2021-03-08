@@ -48,8 +48,4 @@ class UsersController < ApplicationController
         @user.is_customer = true
     end
 
-    def find_user
-        @user = User.find_by(id: params[:id])
-    end
-
 end
