@@ -1,7 +1,7 @@
 class TestsController < ApplicationController
     before_action :require_login
     before_action :can_register_test?, only: [:new]
-    before_action :user_can_view_user
+    before_action :user_can_view_user, except: [:new_registration, :register]
 
     def index
         if params[:user_id] && current_company
@@ -50,10 +50,10 @@ class TestsController < ApplicationController
                 @test.save
                 redirect_to user_test_path(current_user, @test)
             else
-                redirect_to root_path
+                redirect_to root_path, notice: "Unable to register test. Make sure the correct id was entered."
             end
         else
-            redirect_to root_path, notic: "Unable to register test. "
+            redirect_to root_path, notice: "Unable to register test. Make sure the correct id was entered."
         end
 
     end
