@@ -28,11 +28,11 @@ module UsersHelper
         redirect_to user_path(current_user), notice: "Restricted" unless logged_in? && current_user.super_admin || current_user.lab_super_admin
     end
 
-    def is_company_super_admin?
+    def redirect_unless_company_super_admin?
         redirect_to user_path(current_user), notice: "Restricted" unless logged_in? && current_user.super_admin 
     end
 
-    def is_lab_super_admin?
+    def redirect_unless_lab_super_admin?
         redirect_to user_path(current_user), notice: "Restricted" unless logged_in? && current_user.lab_super_admin
     end
 
