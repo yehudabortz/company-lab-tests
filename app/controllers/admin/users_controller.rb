@@ -25,7 +25,6 @@ class Admin::UsersController < ApplicationController
     end
     
     def edit
-        binding.pry
     end
 
     def update
