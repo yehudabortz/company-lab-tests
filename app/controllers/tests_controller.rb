@@ -2,9 +2,6 @@ class TestsController < ApplicationController
     before_action :require_login
     before_action :can_register_test?, only: [:new]
     before_action :user_can_view_user
-    # before_action only:[:show, :edit, :update, :destroy] do
-    #     require_test_ownership(test_belongs_to_user)
-    # end
 
     def index
         if params[:user_id] && current_company
@@ -73,12 +70,6 @@ class TestsController < ApplicationController
 
     def find_test_by_unique_id
         @test = Test.find_by(unique_test_id: test_params[:unique_test_id])
-    end
-
-    def test_belongs_to_user
-        if !current_user.nil?
-            user_can_view_user
-        end
     end
 
 end
