@@ -1,10 +1,10 @@
-<%= form_for @company_lab_connection do |f| %>
+<%= form_for @company_lab_connection, html: {class:"form-stretch"} do |f| %>
 
     <%= f.fields_for @user do |user_form| %>
         <%= user_form.label :email, class: "label" %>
-        <%= user_form.text_field :email, class: "input" %> <br></br>
+        <%= user_form.text_field :email, class: input_with_errors_class(@user, :email) %>
+        <p class="help is-danger"><%= format_error(@user.errors[:email]) if @user.errors.any? %></p>
     <% end %>
-    <div class="control">
-        <%= f.submit "Connect Lab", class: "button is-link" %>
-    </div>
+    
+    <%= f.submit "Connect Lab", class: "btn" %>
 <% end %>

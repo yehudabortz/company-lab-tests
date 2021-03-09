@@ -9,6 +9,6 @@ module ApplicationHelper
     end
 
     def input_with_errors_class(model, param)
-        "input #{ 'is-danger' if model.errors["#{param}"].any?}"
+        "input-box #{ 'red-warning' if model.errors["#{param}"].any?}"
     end
 end

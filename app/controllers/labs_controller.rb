@@ -17,7 +17,7 @@ class LabsController < ApplicationController
             set_user
             redirect_to lab_path @lab
         else
-            redirect_to login_path, notice: "Unable to create new lab."
+            render 'new'
         end
     end
 

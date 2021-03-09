@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :tests, only: [:show]
 
   resources :users do
-    resources :tests
+    resources :tests, except: [:edit]
   end
   
   namespace :admin do 

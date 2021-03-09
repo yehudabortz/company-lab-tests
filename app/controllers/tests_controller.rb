@@ -29,9 +29,6 @@ class TestsController < ApplicationController
         find_test
     end
 
-    def edit
-    end
-
     def update
     end
 

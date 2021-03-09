@@ -1,13 +1,23 @@
-<%= form_for @test do |f| %>
-    <%= f.label :unique_test_id %>
+<%= form_for @test, html: {class:"form-stretch"} do |f| %>
+
+    <%= f.label :unique_test_id, class: "label" %>
     <%= f.text_field :unique_test_id, :disabled => true  %> <br>
-    <%= f.label :mma %>
-    <%= f.text_field :mma %> <br>
-    <%= f.label :creatinine %>
-    <%= f.text_field :creatinine %> <br>
-    <%= f.label :final_result %>
-    <%= f.text_field :final_result %> <br>
-    <%= f.label :verified %>
+    <p class="help is-danger"><%= format_error(@test.errors[:unique_test_id]) if @test.errors.any? %></p>
+    
+    <%= f.label :mma, class: "label" %>
+    <%= f.text_field :mma, class: input_with_errors_class(@test, :mma) %> <br>
+    <p class="help is-danger"><%= format_error(@test.errors[:mma]) if @test.errors.any? %></p>    
+    
+    <%= f.label :creatinine, class: "label" %>
+    <%= f.text_field :creatinine, class: input_with_errors_class(@test, :creatinine) %> <br>
+    <p class="help is-danger"><%= format_error(@test.errors[:creatinine]) if @test.errors.any? %></p>
+    
+    <%= f.label :final_result, class: "label" %>
+    <%= f.text_field :final_result, class: input_with_errors_class(@test, :final_result) %> <br>
+    <p class="help is-danger"><%= format_error(@test.errors[:final_result]) if @test.errors.any? %></p>
+    
+    <%= f.label :verified, class: "label" %>
     <%= f.check_box :verified %> <br>
+
     <%= f.submit %> <br>
 <% end %>

@@ -1,11 +1,10 @@
-<%= form_for @lab do |f| %>
+<%= form_for @lab, html: {class:"form-stretch"} do |f| %>
     <%= f.label :lab_name, class: "label" %>
-    <%= f.text_field :name, class: "input" %><br></br>
+    <%= f.text_field :name, class: input_with_errors_class(@lab, :lab_name) %>
+    <p class="help is-danger"><%= format_error(@lab.errors[:lab_name]) if @lab.errors.any? %></p>
     <%= f.fields_for @user do |f| %>
        <%= render partial: 'users/base_user_form', locals: {f: f} %>
     <% end %>
-
-    <div class="control">
-        <%= f.submit class: "button is-link" %>
-    </div>
+    <%= f.submit class: "btn" %>
 <% end %>
+
