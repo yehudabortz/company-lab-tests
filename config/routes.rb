@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   end
 
   resources :companies, :labs, :company_lab_connections
-  # resources :users, :tests, :companies, :labs, :company_lab_connections
   resources :tests, only: [:show]
 
   resources :users do
