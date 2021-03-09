@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   get '/tests/registration', to: 'tests#new_registration'
   post '/tests/registration', to: 'tests#register'
 
-  resources :users, :companies, :labs, :company_lab_connections
+  resources :users do
+    post :deactivate, on: :member
+  end
+
+  resources :companies, :labs, :company_lab_connections
   # resources :users, :tests, :companies, :labs, :company_lab_connections
   resources :tests, only: [:show]
 

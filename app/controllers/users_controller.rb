@@ -33,7 +33,16 @@ class UsersController < ApplicationController
         redirect_to @user
     end
 
+    def deactivate
+        find_user.active = false
+        redirect_to root_path
+    end
+    
     def destroy
+        binding.pry
+        find_user.delete 
+        session[:user_id] = nil
+        redirect_to root_path
     end
 
     private 
