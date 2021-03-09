@@ -1,5 +1,8 @@
 <% pending_lab_connections.each do |connection| %>
-    <%= connection.company.name %> wants to connect 
-    <%= link_to "accept", company_lab_connection_path(connection), method: :patch %>
-    <%= link_to "decline", company_lab_connection_path(connection), method: :delete %>
+    <div class="notification is-link is-light">
+        <button class="delete"></button>
+        <strong><%= connection.company.name %></strong> wants to connect. <br></br>
+        <%= link_to "accept", company_lab_connection_path(connection), method: :patch, class: 'button is-small is-link' %> 
+        <%= link_to "decline", company_lab_connection_path(connection), method: :delete, class: 'button is-small is-danger' %>
+      </div>
 <% end %>

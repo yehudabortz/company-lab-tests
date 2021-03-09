@@ -25,6 +25,9 @@ class CompanyLabConnectionsController < ApplicationController
         elsif !current_company.nil?
             @company_lab_connections = CompanyLabConnection.current_company_lab_connections(current_company)
         end
+        if @company_lab_connections.empty?
+            flash[:message] = "No connections yet."
+        end
     end
 
     def show
