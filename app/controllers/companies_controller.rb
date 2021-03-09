@@ -36,6 +36,11 @@ class CompaniesController < ApplicationController
     end
     
     def update
+        find_company
+        find_user
+        @company = Company.update(name: company_params[:name])
+        @user = User.update(company_params[:user])
+        redirect_to @company
     end
     
     def destroy
