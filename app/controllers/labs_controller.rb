@@ -21,9 +21,6 @@ class LabsController < ApplicationController
         end
     end
 
-    def index
-    end
-
     def show
         find_lab
     end

@@ -1,9 +1,6 @@
 class CompaniesController < ApplicationController
     before_action :verify_user_company_relationship, only: [:show, :edit]
 
-    def index
-    end
-
     def new
         @company = Company.new
         @user = User.new
