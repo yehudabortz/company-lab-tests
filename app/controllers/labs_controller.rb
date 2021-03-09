@@ -34,7 +34,12 @@ class LabsController < ApplicationController
     def update
     end
 
-    def destroy
+    def update
+        find_lab
+        find_user
+        @lab = Lab.update(name: lab_params[:name])
+        @user = User.update(company_params[:user])
+        redirect_to @lab
     end
 
     private
