@@ -28,6 +28,31 @@ class User < ApplicationRecord
         end
     end
 
+    def self.create_from_omniauth_lab(auth)
+        self.find_or_create_by(uid: auth['uid'], provider: auth['provider']) do |u|
+            lab = Lab.new(name: SecureRandom.hex(5))
+            lab.users << u
+            u.first_name = auth[:info][:first_name]
+            u.last_name = auth[:info][:last_name]
+            u.email = auth[:info][:email]
+            u.belongs_to_lab = true
+            u.lab_super_admin = true
+            u.password = SecureRandom.hex(16)
+        end
+    end
+    def self.create_from_omniauth_company(auth)
+        self.find_or_create_by(uid: auth['uid'], provider: auth['provider']) do |u|
+            company = Company.new(name: SecureRandom.hex(5))
+            company.users << u
+            u.first_name = auth[:info][:first_name]
+            u.last_name = auth[:info][:last_name]
+            u.email = auth[:info][:email]
+            u.belongs_to_company = true
+            u.super_admin = true
+            u.password = SecureRandom.hex(16)
+        end
+    end
+
     # def password_requirements_are_met
     #     rules = {
     #       " must contain at least one lowercase letter"  => /[a-z]+/,

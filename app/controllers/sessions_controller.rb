@@ -28,7 +28,13 @@ class SessionsController < ApplicationController
     end
 
     def omniauth
-        @user = User.create_from_omniauth(auth)
+        if request.env['omniauth.params']["user"] == "lab"
+            @user = User.create_from_omniauth_lab(auth)
+        elsif request.env['omniauth.params']["user"] == "company"
+            @user = User.create_from_omniauth_company(auth)
+        else
+            @user = User.create_from_omniauth(auth)
+        end
         if @user.valid?
             set_user
             redirect_to @user
