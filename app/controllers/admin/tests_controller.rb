@@ -4,7 +4,7 @@ class Admin::TestsController < ApplicationController
     before_action :redirect_unless_lab_super_admin?, only: [:edit, :update]
     before_action :redirect_unless_company_super_admin?, only: [:new, :create]
 
-    helper_method :has_company_admin_permissions?, :require_test_ownership
+    helper_method :require_test_ownership
 
     def index
         if current_user.belongs_to_company
@@ -49,12 +49,13 @@ class Admin::TestsController < ApplicationController
         end
     end
 
+    
+
     private
 
     def test_params
         params.require(:test).permit(:unique_test_id, :mma, :creatinine, :verified)
     end
-
 
     def find_test
         @test = Test.find_by(id: params[:id])
