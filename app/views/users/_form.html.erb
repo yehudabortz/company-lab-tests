@@ -1,4 +1,3 @@
-
 <%= form_for @user, html: {class:"form-stretch"} do |f| %>
         <%= f.label :first_name, class: "label" %>
         <%= f.text_field :first_name, class: input_with_errors_class(@user, :first_name) %>
@@ -29,10 +28,10 @@
         <%= f.label :dr_email, class: "label" %>
         <%= f.text_field :dr_email, class: input_with_errors_class(@user, :dr_email) %> 
         <p class="help is-danger"><%= format_error(@user.errors[:dr_email]) if @user.errors.any? %></p>
-    <% if !logged_in? %>
-        <%= f.label :password, class: "label" %>
-        <%= f.password_field :password, class: input_with_errors_class(@user, :password) %>
-        <p class="help is-danger"><%= format_error(@user.errors[:password]) if @user.errors.any? %></p>
-    <% end %>
+        <% if !logged_in? %>
+            <%= f.label :password, class: "label" %>
+            <%= f.password_field :password, class: input_with_errors_class(@user, :password) %>
+            <p class="help is-danger"><%= format_error(@user.errors[:password]) if @user.errors.any? %></p>
+        <% end %>
         <%= f.submit class: "btn" %>
 <% end %>
