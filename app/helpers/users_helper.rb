@@ -8,8 +8,8 @@ module UsersHelper
         redirect_to root_path, notice: "Restricted" unless logged_in? && current_user.is_customer && current_user.id == params[:user_id].to_i || current_user.super_admin && current_user.company.company_customers(current_company).include?(User.find(params[:user_id] ))
     end
 
-    def admin_can_view_user
-        redirect_to root_path, notice: "Restricted" unless logged_in? && current_user.belongs_to_lab || current_user.belongs_to_lab && current_user.id == params_id_integer
+    def is_admin_user
+        redirect_to root_path, notice: "Restricted" unless logged_in? && current_user.id == params_id_integer && current_user.belongs_to_company || current_user.belongs_to_lab
     end
 
     def customer_has_provided_all_info
