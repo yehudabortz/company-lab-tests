@@ -9,6 +9,9 @@ class TestsController < ApplicationController
         else
             @tests = Test.belonging_to_user(current_user)
         end
+        if @tests.empty?
+            flash[:message] = "No tests yet."
+        end
     end
 
     def new
