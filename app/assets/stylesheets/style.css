@@ -263,10 +263,11 @@ form input .btn {
     color: white;
 }
 .checkbox {
+    height: 20px;
+    width: 20px;
     border-radius: 50px;
-    margin-top: 5;
-    margin-bottom: 0;
-    margin-left: 10px;
+
+   margin-top : 2px;
 }
 
 

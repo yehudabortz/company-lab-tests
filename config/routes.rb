@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   
   namespace :admin do 
     resources :tests
-    resources :users
+    resources :users, except: [:edit, :update]
   end
 
 
