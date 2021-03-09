@@ -29,6 +29,8 @@ class LabsController < ApplicationController
     end
 
     def edit
+        find_lab
+        @user = User.find_by(id: current_user.id)
     end
 
     def update
@@ -38,8 +40,9 @@ class LabsController < ApplicationController
         find_lab
         find_user
         @lab = Lab.update(name: lab_params[:name])
-        @user = User.update(company_params[:user])
-        redirect_to @lab
+        @user = User.update(lab_params[:user])
+        flash[:message] = "Lab Updated"
+        redirect_to root_path
     end
 
     private

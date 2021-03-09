@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
     skip_before_action :verify_authenticity_token, only: :create
 
     def new
+        redirect_to user_path(current_user) if logged_in?
         @user = User.new
     end
     
