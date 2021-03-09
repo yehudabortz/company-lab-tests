@@ -29,12 +29,6 @@ class TestsController < ApplicationController
         find_test
     end
 
-    def update
-    end
-
-    def destroy
-    end
-
     def new_registration
         redirect_to edit_user_path(current_user), notice: "Complete your profile to register a test." unless customer_has_provided_all_info
         @test = Test.new
@@ -62,7 +56,6 @@ class TestsController < ApplicationController
     end
 
     def find_test
-        # binding.pry
         @test = Test.find_by(id: params[:id])
     end
 
