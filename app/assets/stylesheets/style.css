@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;900&display=swap');
 * {box-sizing: border-box;}
+html {
+    background: #f8f9fa;
+}
 body {
     font-weight: 500;
     margin: 0px;
@@ -8,7 +11,6 @@ body {
     flex-direction: column;
     -webkit-flex-direction: column;
     font-family: 'Roboto', sans-serif;
-    background: #f8f9fa;
     align-items: center;
     -webkit-align-items: center;
 }
@@ -198,7 +200,7 @@ form input .btn {
 .delete-button {
 
     color: #1b1b1b;
-    border: solid 1px red;
+    border: solid 1px #f14668;
 }
 
 .primary-outline {
@@ -209,8 +211,8 @@ form input .btn {
 
 .red-outline {
     background: white;
-    color: #dc3545;
-    border: solid 1px #dc3545;
+    color: #f14668;
+    border: solid 1px #f14668;
 }
 .dark-outline {
     background: white;
@@ -251,11 +253,11 @@ form input .btn {
 
 .red-outline:hover {
     color: white;
-    background: #dc3545;
+    background: #f14668;
 }
 
 .red-text {
-    color: #dc3545;
+    color: #f14668;
 }
 .red-text:hover {
     color: white;
@@ -368,6 +370,33 @@ form input .btn {
 .profile-card h3, h4 {
     color: #1b1b1b;
     margin: 0px;
+}
+
+.alert-container {
+    width: auto;
+    display: inline;
+    padding: 35px;
+    background-color: white;
+    position: fixed;
+    z-index: 100;
+    margin-top: 25px;
+    margin-right: 25px;
+    left: auto;
+    right: 0;
+    border: solid 1px #d8e1eb;
+    border-radius: 5px;
+    font-size: 14px;
+    color: rgb(77, 86, 116);
+}
+
+.delete {
+    position: absolute;
+    z-index: 100;
+    margin-top: 8px;
+    margin-right: 8px;
+    left: auto;
+    right: 0;
+    top: 0;
 }
 
 .center {

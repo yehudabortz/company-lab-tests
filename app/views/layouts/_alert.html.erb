@@ -1,17 +1,5 @@
-<script>
-        document.addEventListener('DOMContentLoaded', () => {
-    (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
-        const $notification = $delete.parentNode;
-
-        $delete.addEventListener('click', () => {
-        $notification.parentNode.removeChild($notification);
-        });
-    });
-    });
-</script>
-
 <% flash.each do |type, msg| %>
-    <div class="notification is-info is-light">
+    <div class="alert-container ">
         <button class="delete"></button>
         <%= msg  %>
     </div>
