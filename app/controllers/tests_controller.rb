@@ -7,16 +7,13 @@ class TestsController < ApplicationController
         if params[:user_id] && current_company
             @tests = Test.belonging_to_user(User.find( params[:user_id])).where(company_id: current_company.id)
         else
-            @tests = Test.belonging_to_user(current_user)
+            @tests = Test.belonging_to_user(User.find( params[:user_id]))
         end
-        if @tests.empty?
-            flash[:message] = "No tests yet."
-        end
+
     end
 
     def new
         @test = Test.new
-
     end
 
     def create
@@ -68,6 +65,7 @@ class TestsController < ApplicationController
     end
 
     def find_test
+        # binding.pry
         @test = Test.find_by(id: params[:id])
     end
 

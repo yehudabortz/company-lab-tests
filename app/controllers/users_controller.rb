@@ -39,7 +39,6 @@ class UsersController < ApplicationController
     end
     
     def destroy
-        binding.pry
         find_user.delete 
         session[:user_id] = nil
         redirect_to root_path

@@ -1,6 +1,6 @@
 <% @tests.each do |test| %>
    <% if test.user %>
-      <%= link_to test.unique_test_id, user_test_path(test, test.user) %>
+      <%= link_to test.unique_test_id, user_test_path(test.user, test) %>
       <% else %>
       <%= link_to test.unique_test_id, test_path(test) %>
    <% end %>
