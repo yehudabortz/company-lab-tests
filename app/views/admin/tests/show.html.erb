@@ -1,3 +1,8 @@
 <div class="container">
     <%= render 'test_show' %>
 </div>
+<% if current_lab %>
+    <div class="container">
+        <%= link_to "Update Test", edit_admin_test_path(@test), class: "btn" %>
+    </div>
+<% end %>
