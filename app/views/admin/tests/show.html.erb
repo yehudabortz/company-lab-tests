@@ -6,3 +6,8 @@
         <%= link_to "Update Test", edit_admin_test_path(@test), class: "btn" %>
     </div>
 <% end %>
+<% if current_user.super_admin && @test.user %>
+    <div class="container">
+        <%= link_to "View All of #{@test.user.first_name}'s Tests", user_tests_path(@test.user), class: "btn primary-outline" %>
+    </div>
+<% end %>
