@@ -12,7 +12,7 @@
         
         <time datetime="2016-1-1" class="info-text">Connected on <%= readable_timestamp(connection.created_at) %></time>
         <div class="divider"></div>
-        <%= link_to "delete", company_lab_connection_path(connection), class: "btn-sm red-outline", method: 'delete', data: { confirm: 'Are you sure you want to delete your account? This action cannot be undone.' }  if company_admin?%>
+        <%= link_to "delete", company_lab_connection_path(connection), class: "btn-sm red-outline", method: 'delete', data: { confirm: 'Are you sure you want to delete your account? This action cannot be undone.' }  if current_user.super_admin %>
     </div>
       <% end %> 
     </div>

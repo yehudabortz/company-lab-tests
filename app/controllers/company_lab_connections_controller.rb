@@ -1,6 +1,6 @@
 class CompanyLabConnectionsController < ApplicationController
     before_action :require_login, :is_admin?
-    before_action :is_admin_user, only: [:new]
+    before_action :redirect_unless_company_super_admin?, only: [:new]
 
     def new
         @company_lab_connection = CompanyLabConnection.new

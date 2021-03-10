@@ -52,5 +52,9 @@ class ApplicationController < ActionController::Base
       instance.errors.full_messages
    end
 
+   def strip_text(text)
+      text.strip
+   end
+
 end
 
