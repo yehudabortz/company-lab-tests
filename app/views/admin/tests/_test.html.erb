@@ -26,5 +26,10 @@
                 <%= readable_timestamp(test.updated_at) %>
             </td>
         <% end %>
+        <% if current_user.lab_super_admin %>
+            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+            <%= link_to "Edit", edit_admin_test_path(test), class: "is-link" %>
+            </td>
+        <% end %>
     </tr>
 </tbody>

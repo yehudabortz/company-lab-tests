@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   resources :companies, :labs, :company_lab_connections
-  resources :tests, only: [:show]
+  resources :tests, only: [:show, :destroy]
 
   resources :users do
     resources :tests, except: [:edit]
