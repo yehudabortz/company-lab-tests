@@ -8,5 +8,5 @@
         <%= f.password_field :password, class: input_with_errors_class(@user, :password) %>
         <p class="help is-danger"><%= format_error(@user.errors[:password]) if @user.errors.any? %></p>
 
-        <%= f.submit class: "btn" %>
+        <%= f.submit "Login", class: "btn" %>
 <% end %>
