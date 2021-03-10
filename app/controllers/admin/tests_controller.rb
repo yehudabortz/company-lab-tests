@@ -39,17 +39,28 @@ class Admin::TestsController < ApplicationController
 
     def update
         find_test
-        @test.update(test_params)
-        if @test.update(test_params)
-            @test.calculate_result
-            @test.save
-            redirect_to admin_test_path(@test)
+        if @test.verified
+            redirect_to admin_test_path(@test), notice: "Verified tests cannot be resubmitted"
         else
-            redirect_to admin_test_path(@test), notice: display_model_errors
+            if test_params[:creatinine] == (nil || 0) || test_params[:mma] == (nil || 0)
+                @test.update(test_params)
+                @test.final_result = nil
+                @test.save
+                redirect_to admin_test_path(@test), notice: "Test Updated"
+            else          
+                @test.update(test_params)
+                if @test.update(test_params)
+                    @test.calculate_result
+                    @test.save
+                    redirect_to admin_test_path(@test)
+                else
+                    redirect_to admin_test_path(@test), notice: display_model_errors(@test)
+                end
+            end
         end
     end
 
-    
+
 
     private
 
