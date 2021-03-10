@@ -8,7 +8,7 @@
             <%= link_to "My Profile", user_path(current_user), class: "tn btn-link" if logged_in? %>
             <%= link_to "New Company", new_company_path, class: "navbar-item" if !logged_in? %>
             <%= link_to "New Lab", new_lab_path, class: "navbar-item" if !logged_in? %>
-            <%= link_to "Login", login_path, class: "button is-link" if !logged_in? %>
+            <%= link_to "Login", login_path, class: "is-link" if !logged_in? %>
             <%= link_to "Sign Up", signup_path, class: "btn" if !logged_in? %>
             <%= link_to "Log Out", logout_path, method: 'delete', class: "button is-light" if logged_in? %>
     </div>
