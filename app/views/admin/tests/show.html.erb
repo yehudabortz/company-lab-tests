@@ -10,7 +10,7 @@
 <div class="container">
             <%= link_to "View All of #{@test.user.first_name}'s Tests", user_tests_path(@test.user), class: "btn primary-outline" %>
             <br>
-            <%= link_to "Add A New Test For #{@test.user.first_name}", admin_user_tests_path(current_user), method: "post", class: "btn primary-outline" %>
+            <%= link_to "Add A New Test For #{@test.user.first_name}", admin_user_tests_path(@test.user), method: "post", class: "btn primary-outline" %>
     </div>
 <% end %>
 
