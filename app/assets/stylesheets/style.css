@@ -331,6 +331,10 @@ form input .btn {
     margin-bottom: 4vw;
 }
 
+.margin-5 {
+    margin-bottom: 5px;
+}
+
 .username {
     font-size: .9rem;
 }
