@@ -1,7 +1,7 @@
 class User < ApplicationRecord
     has_secure_password
     has_many :tests
-    has_many :companies
+    # has_many :companies
 
     belongs_to :company, optional: true
     belongs_to :lab, optional: true

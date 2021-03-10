@@ -1,5 +1,6 @@
 class CompanyLabConnectionsController < ApplicationController
     before_action :require_login, :is_admin?
+    before_action :is_admin_user, only: [:new]
 
     def new
         @company_lab_connection = CompanyLabConnection.new
