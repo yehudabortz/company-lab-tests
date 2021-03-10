@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
                 redirect_to login_path, notice: "Unable to login. Please make sure your email and password are correct."
             end
         else
-            redirect_to login_path, notice: "Try again. Email or password doese not exist."
+            redirect_to login_path, notice: "Unable To Log In"
         end
       end
     
@@ -29,6 +29,8 @@ class SessionsController < ApplicationController
     end
 
     def omniauth
+        @user = User.find_by(email: auth[:info][:email])
+        return redirect_to login_path, notice: "Unable to log in." unless @user.provider
         if request.env['omniauth.params']["user"] == "lab"
             @user = User.create_from_omniauth_lab(auth)
         elsif request.env['omniauth.params']["user"] == "company"
