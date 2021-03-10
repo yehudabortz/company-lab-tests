@@ -41,6 +41,7 @@ class User < ApplicationRecord
         end
     end
     def self.create_from_omniauth_company(auth)
+        binding.pry
         self.find_or_create_by(uid: auth['uid'], provider: auth['provider']) do |u|
             company = Company.new(name: SecureRandom.hex(5))
             company.users << u
