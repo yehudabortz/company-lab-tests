@@ -20,9 +20,13 @@
         <p class="help is-danger"><%= format_error(@test.errors[:final_result]) if @test.errors.any? %></p>
     <% end %>
     
+    <div class="divider"></div>
     <div class="flex">
         <%= f.label :verified, class: "label" %>
         <%= f.check_box :verified, class: "checkbox" %> <br>
+    </div>
+    <div>
+        <p class="info-text">Once verified, changes cannot be made to the results.</p> <br>
     </div>
 
     <%= f.submit class: "btn" %> <br>
