@@ -36,7 +36,7 @@ class TestsController < ApplicationController
 
     def register
         if find_test_by_unique_id
-            if !!current_user
+            if !!current_user && @test.user.nil?
                 @test.user = current_user
                 @test.save
                 redirect_to user_test_path(current_user, @test)
