@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
+    before_action :require_login, except: [:new, :create]
     before_action :only_user_can_view, except: [:new, :create]
 
     def new
-        redirect_to user_path(current_user) if logged_in?
+        # redirect_to user_path(current_user) if logged_in?
         @user = User.new
     end
 

@@ -19,14 +19,23 @@ class Admin::TestsController < ApplicationController
         @test = Test.new
         @test.unique_test_id = Test.generate_unique_test_id
     end
-
+    
     def create
-        @test = Test.new(test_params)
-        @test.company = current_company
-        if @test.save
-            redirect_to admin_test_path(@test)
+        if params[:user_id]
+            @test = Test.new
+            @test.unique_test_id = Test.generate_unique_test_id
+            @test.user = User.find_by(id: params[:user_id])
+            @test.company = current_company
+            @test.save
+            redirect_to user_tests_path(params[:user_id])
         else
-            redirect_to new_admin_test_path, notice: @test.errors.full_messages
+            @test = Test.new(test_params)
+            @test.company = current_company
+            if @test.save
+                redirect_to admin_test_path(@test)
+            else
+                redirect_to new_admin_test_path, notice: @test.errors.full_messages
+            end
         end
     end
 

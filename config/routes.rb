@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   namespace :admin do 
     resources :tests
     resources :users, except: [:edit, :update]
+    resources :users do
+      resources :tests, only: [:create]
+    end
   end
 
 
