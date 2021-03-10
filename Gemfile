@@ -63,3 +63,7 @@ gem "omniauth", "~> 2.0"
 gem "omniauth-google-oauth2", "~> 0.8.1"
 gem "omniauth-rails_csrf_protection"
 
+
+gem "chartkick"
+
+gem "groupdate", "~> 5.2"

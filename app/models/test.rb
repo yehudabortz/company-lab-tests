@@ -22,5 +22,11 @@ class Test < ApplicationRecord
         end
     end
 
+    def final_result_over_time(user)
+        Test.belonging_to_user(user).map do |t|
+            t.final_result
+        end
+    end
+
 
 end
