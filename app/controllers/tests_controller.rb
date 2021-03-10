@@ -41,10 +41,10 @@ class TestsController < ApplicationController
                 @test.save
                 redirect_to user_test_path(current_user, @test)
             else
-                redirect_to root_path, notice: "Unable to register test. Make sure the correct id was entered."
+                redirect_to tests_registration_path, notice: "Unable to register test. Make sure the correct id was entered."
             end
         else
-            redirect_to root_path, notice: "Unable to register test. Make sure the correct id was entered."
+            redirect_to tests_registration_path, notice: "Unable to register test. Make sure the correct id was entered."
         end
 
     end
