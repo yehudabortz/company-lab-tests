@@ -46,7 +46,10 @@ class TestsController < ApplicationController
         else
             redirect_to tests_registration_path, notice: "Unable to register test. Make sure the correct id was entered."
         end
+    end
 
+    def destroy
+        binding.pry
     end
 
     private

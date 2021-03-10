@@ -1,5 +1,6 @@
 class Admin::TestsController < ApplicationController
     before_action :require_login
+    before_action :can_delete_tests?, only: [:destroy]
     before_action :has_access_to_company_tests?
     before_action :redirect_unless_lab_super_admin?, only: [:edit, :update]
     before_action :redirect_unless_company_super_admin?, only: [:new, :create]
@@ -60,7 +61,10 @@ class Admin::TestsController < ApplicationController
         end
     end
 
-
+    def destroy
+        find_test.delete
+        redirect_to admin_tests_path, notice: "#{@test.unique_test_id} Deleted"
+    end
 
     private
 

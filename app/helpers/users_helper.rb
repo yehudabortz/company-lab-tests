@@ -32,6 +32,10 @@ module UsersHelper
         redirect_to user_path(current_user), notice: "Restricted" unless logged_in? && current_user.super_admin || current_user.belongs_to_company || current_user.lab_super_admin
     end
 
+    def can_delete_tests?
+        redirect_to user_path(current_user), notice: "Restricted" unless logged_in? && current_user.super_admin
+    end
+
     def redirect_unless_company_super_admin?
         redirect_to user_path(current_user), notice: "Restricted" unless logged_in? && current_user.super_admin 
     end
