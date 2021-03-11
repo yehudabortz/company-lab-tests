@@ -64,3 +64,5 @@ gem "omniauth-google-oauth2", "~> 0.8.1"
 gem "omniauth-rails_csrf_protection"
 
 
+
+gem "sendgrid-ruby", "~> 6.4"
