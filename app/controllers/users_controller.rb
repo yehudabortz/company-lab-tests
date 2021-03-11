@@ -3,7 +3,6 @@ class UsersController < ApplicationController
     before_action :only_user_can_view, except: [:new, :create]
 
     def new
-        # redirect_to user_path(current_user) if logged_in?
         @user = User.new
     end
 
@@ -29,7 +28,7 @@ class UsersController < ApplicationController
     def update
         find_user
         @user.update(user_params)
-        redirect_to @user
+        redirect_to @user, notice: "Profile Updated"
     end
 
     def deactivate
