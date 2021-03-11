@@ -6,8 +6,9 @@ Rails.application.routes.draw do
     post :deactivate, on: :member
   end
 
-  resources :companies, :labs, :company_lab_connections
+  resources :companies, :labs
   resources :tests, only: [:show, :destroy]
+  resources :company_lab_connections, except: [:show]
 
   resources :users do
     resources :tests, except: [:edit]
