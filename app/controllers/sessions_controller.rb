@@ -30,7 +30,7 @@ class SessionsController < ApplicationController
 
     def omniauth
         @user = User.find_by(email: auth[:info][:email])
-        return redirect_to login_path, notice: "Unable to log in." unless @user.provider
+        return redirect_to login_path, notice: "Unable to log in." if @user && !@user.provider
         if request.env['omniauth.params']["user"] == "lab"
             @user = User.create_from_omniauth_lab(auth)
         elsif request.env['omniauth.params']["user"] == "company"
