@@ -37,6 +37,7 @@ class CompaniesController < ApplicationController
         @user = current_user
         @user.update(company_params[:user])
         @company.update(name: company_params[:name])
+        flash[:message] = "Company Profile Updated"
         redirect_to company_path(@company)
     end
     
@@ -64,7 +65,5 @@ class CompaniesController < ApplicationController
     def find_company
         @company = Company.find_by(id: params[:id])
     end
-
-
 
 end
