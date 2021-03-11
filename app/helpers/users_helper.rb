@@ -20,18 +20,6 @@ module UsersHelper
         current_user.is_customer
     end
 
-    def can_register_test?
-        redirect_to user_path(current_user), notice: "Restricted" unless logged_in? && is_customer?
-    end
-
-    def can_access_test?
-        redirect_to user_path(current_user), notice: "Restricted" unless logged_in? && is_customer? && current_user.company.test_ids.include?(params[:id])
-    end
-
-    def has_access_to_company_tests?
-        redirect_to user_path(current_user), notice: "Restricted" unless logged_in? && current_user.super_admin || current_user.belongs_to_company || current_user.lab_super_admin
-    end
-
     def can_delete_tests?
         redirect_to user_path(current_user), notice: "Restricted" unless logged_in? && current_user.super_admin
     end
