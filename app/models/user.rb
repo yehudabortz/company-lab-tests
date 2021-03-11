@@ -49,7 +49,7 @@ class User < ApplicationRecord
         end
     end
 
-    def send_welcome_email(user)
+    def self.send_welcome_email(user)
         if user.created_at.utc + 1.minutes > Time.now.utc
             UserMailer.welcome_email(user).deliver_later
         end
