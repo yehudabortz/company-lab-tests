@@ -63,7 +63,6 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "company_lab_tests_production"
 
   config.action_mailer.perform_caching = false
-
   config.action_mailer.default_url_options = { host: 'company-lab-tests.herokuapp.com' }
   config.action_mailer.delivery_method = :sendmail
   config.action_mailer.perform_deliveries = true
