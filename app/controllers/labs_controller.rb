@@ -33,10 +33,10 @@ class LabsController < ApplicationController
     def update
         find_lab
         find_user
-        @lab = Lab.update(name: lab_params[:name])
+        @lab.update(name: lab_params[:name])
         @user = User.update(lab_params[:user])
         flash[:message] = "Lab Updated"
-        redirect_to root_path
+        redirect_to admin_user_path(current_user)
     end
 
     private
