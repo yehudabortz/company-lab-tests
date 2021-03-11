@@ -40,6 +40,7 @@ class SessionsController < ApplicationController
         end
         if @user.valid?
             set_user
+            send_welcome_email(@user)
             redirect_to @user
         else
             flash[:message] = @user.errors.full_messages

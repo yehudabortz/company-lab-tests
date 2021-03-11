@@ -10,6 +10,7 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
         set_customer_permissions
         if @user.save
+            UserMailer.welcome_email(@user).deliver_now
             set_user
             redirect_to @user
         else

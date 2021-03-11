@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   get '/tests/registration', to: 'tests#new_registration'
   post '/tests/registration', to: 'tests#register'
 
+  get '/longest_lab_name', to: 'labs#longest_lab_name'
+
   resources :users do
     post :deactivate, on: :member
   end

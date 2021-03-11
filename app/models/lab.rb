@@ -7,6 +7,9 @@ class Lab < ApplicationRecord
     validates :name, presence: true
     validates :name, uniqueness: { case_sensitive: false }
     
+    scope :longest_lab_name, -> { order("LENGTH(name) DESC" )}
+
+    
     def accepted_company_connections(current_lab)
         connections = current_lab.company_lab_connections.where(accepted: true)
         Company.find(

@@ -39,6 +39,10 @@ class LabsController < ApplicationController
         redirect_to admin_user_path(current_user)
     end
 
+    def longest_lab_name
+        @lab = Lab.longest_lab_name.first
+    end
+
     private
 
     def lab_params
