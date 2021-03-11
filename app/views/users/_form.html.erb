@@ -33,6 +33,7 @@
             <%= f.password_field :password, class: input_with_errors_class(@user, :password) %>
             <p class="help is-danger"><%= format_error(@user.errors[:password]) if @user.errors.any? %></p>
         <% end %>
-        <%= f.submit "Sign Up", class: "btn"if params[:action] == "new" %>
-        <%= f.submit "Save Changes", class: "btn" if params[:action] == "edit" %>
+        <%= f.submit "Sign Up", class: "btn" if is_signup_or_create_page %>
+        <%= f.submit "Save Changes", class: "btn" if is_edit_or_update_page %>
+        
 <% end %>

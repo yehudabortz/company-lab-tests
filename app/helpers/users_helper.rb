@@ -40,4 +40,11 @@ module UsersHelper
         redirect_to user_path(current_user), notice: "Restricted" unless logged_in? && current_user.super_admin || current_user.lab_super_admin
     end
 
+    def is_signup_or_create_page
+        params[:action] == "new" || params[:action] == "create"
+    end
+
+    def is_edit_or_update_page
+        params[:action] == "edit" || params[:action] == "update"
+    end
 end
