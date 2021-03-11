@@ -5,8 +5,6 @@ class Company < ApplicationRecord
     has_many :labs, through: :company_lab_connections
 
     validates :name, presence: true
-
-
     validates :name, uniqueness: { case_sensitive: false }
 
     def test_ids
