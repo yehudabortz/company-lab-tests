@@ -4,8 +4,9 @@ class Lab < ApplicationRecord
     has_many :company_lab_connections
     has_many :companies, through: :company_lab_connections
 
-
-
+    validates :name, presence: true
+    validates :name, uniqueness: { case_sensitive: false }
+    
     def accepted_company_connections(current_lab)
         connections = current_lab.company_lab_connections.where(accepted: true)
         Company.find(

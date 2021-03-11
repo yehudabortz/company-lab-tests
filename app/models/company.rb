@@ -3,8 +3,8 @@ class Company < ApplicationRecord
     has_many :tests
     has_many :company_lab_connections
     has_many :labs, through: :company_lab_connections
-    # has_many :users, through: :tests
-    # has_many :users, through: :tests
+
+    validates :name, presence: true
 
 
     validates :name, uniqueness: { case_sensitive: false }

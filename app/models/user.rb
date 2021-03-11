@@ -7,6 +7,8 @@ class User < ApplicationRecord
     
     validates :first_name, :last_name, :email, presence: true
     validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
+    validates :password, length: {minimum: 5, maximum: 20}
+
 
 
     scope :is_customer, -> {where(is_customer: true)}
