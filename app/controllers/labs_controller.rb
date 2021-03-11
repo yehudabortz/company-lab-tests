@@ -31,9 +31,6 @@ class LabsController < ApplicationController
     end
 
     def update
-    end
-
-    def update
         find_lab
         find_user
         @lab = Lab.update(name: lab_params[:name])
