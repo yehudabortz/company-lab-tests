@@ -10,6 +10,27 @@ Company Lab Tests is a management and fulfillment web application for Companies 
 ```bash
 rvm use 2.6.6
 ```
+
+- Bundle Install all dependencies
+
+``` bash
+bundle install
+```
+
+- Create a `.env` file in the root directory
+
+``` bash
+touch .env
+```
+
+- In the `.env` file create your environment variables for OmniAuth for Google
+
+``` bash
+GOOGLE_CLIENT_ID=USE YOUR GOOGLE CLIENT ID HERE WITHOUT QUOTES
+GOOGLE_CLIENT_SECRET=YOUR GOOGLE CLIENT SECRET HERE WITHOUT QUOTES
+```
+
+
 - Migrate the database
 ``` bash
 rails db:migrate 
