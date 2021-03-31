@@ -7,7 +7,8 @@
       <%= render 'users/lab_dashboard' if current_lab %>
       <%= render 'users/user_dashboard' if current_user && current_user.is_customer %>
       <div class="divider"></div>
-      <%= button_to "Delete Account", user_path, method: "delete", class: "btn-sm red-outline", data: { confirm: 'Are you sure you want to delete your account? This action can not be undone.' } %>
+      <!-- this is the delete account button -->
+      <!-- <%#= button_to "Delete Account", user_path, method: "delete", class: "btn-sm red-outline", data: { confirm: 'Are you sure you want to delete your account? This action can not be undone.' } %> -->
     </aside>
   </div>
 </div>
