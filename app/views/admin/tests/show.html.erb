@@ -16,7 +16,7 @@
     <br></br>
     <%= @test.user.first_name + " " + @test.user.last_name %> <br>
     <%= @test.user.email %><br>
-    <%= @test.user.birthdate %><br>
+    <%= readable_timestamp(@test.user.birthdate) %><br>
     <%= @test.user.phone %><br>
 
     Created on <%=readable_timestamp(@test.user.created_at)%><br>
