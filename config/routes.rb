@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post '/hooks/webflow', to: 'webflow_webhook#webflow_webhook'
+
   get '/tests/registration', to: 'tests#new_registration'
   post '/tests/registration', to: 'tests#register'
 
