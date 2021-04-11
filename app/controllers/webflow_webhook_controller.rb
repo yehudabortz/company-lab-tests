@@ -6,7 +6,6 @@ class WebflowWebhookController < ApplicationController
         if webhook_params[:unique_test_id] 
             test = Test.find_by(unique_test_id: webhook_params[:unique_test_id].to_i)
             if test
-                test.save
                 user = User.find_or_create_by(email: webhook_params[:email])
                 user.tests << test
                 user.save
@@ -14,8 +13,6 @@ class WebflowWebhookController < ApplicationController
             end 
             render json: user
         end
-        
-        binding.pry
     end
     
     private
