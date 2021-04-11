@@ -14,13 +14,13 @@
     <br>
     <%= link_to "Add A New Test", admin_user_tests_path(@test.user), method: "post", class: "is-link" %>
     <br></br>
-    <%= @test.user.first_name + " " + @test.user.last_name %> <br>
-    <%= @test.user.email %><br>
-    <%= readable_timestamp(@test.user.birthdate) %><br>
-    <%= @test.user.phone %><br>
+    <p><%= @test.user.first_name + " " + @test.user.last_name %></p><br>
+    <p><%= @test.user.email %></p><br>
+    <p>Birthdate: <%= readable_timestamp(@test.user.birthdate) %></p><br>
+    <p><%= @test.user.phone %></p><br>
 
-    Created on <%=readable_timestamp(@test.user.created_at)%><br>
-    <%=@test.user.dr_email%><br>
+    <p>Created on <%=readable_timestamp(@test.user.created_at)%></p><br>
+    <p><%=@test.user.dr_email%></p><br>
 </div>
 
 <% end %>
