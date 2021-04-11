@@ -2,7 +2,6 @@ class WebflowWebhookController < ApplicationController
     skip_before_action :verify_authenticity_token, only: [:webflow_webhook, :webhook_params]
 
     def webflow_webhook
-        binding.pry
         if webhook_params[:unique_test_id] 
             test = Test.find_by(unique_test_id: webhook_params[:unique_test_id].to_i)
             if test
