@@ -7,6 +7,9 @@ class WebflowWebhookController < ApplicationController
             test = Test.find_by(unique_test_id: webhook_params[:unique_test_id].to_i)
             if test
                 user = User.find_or_create_by(email: webhook_params[:email])
+                unless user.password_digest != nil
+                    user.password_digest = SecureRandom.hex(10)
+                end
                 user.tests << test
                 user.save
                 user.update(user_params)
