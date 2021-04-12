@@ -1,2 +1,3 @@
  <%= render :partial => "admin/tests/test_table", locals: {test: @test} %>
- <p>Return Tracking Number: <%= @test.return_tracking%></p>
+ <div></div>
+ <%= link_to "Return Tracking Number: #{@test.return_tracking}", "https://tools.usps.com/go/TrackConfirmAction_input?origTrackNum=#{@test.return_tracking}", class: "is-link"%>
