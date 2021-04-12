@@ -24,6 +24,7 @@ class Admin::TestsController < ApplicationController
             @test = Test.new
             @test.unique_test_id = Test.generate_unique_test_id
             @test.user = User.find_by(id: params[:user_id])
+            @test.return_tracking = params[:return_tracking]
             @test.company = current_company
             @test.save
             redirect_to user_tests_path(params[:user_id])
@@ -77,7 +78,7 @@ class Admin::TestsController < ApplicationController
     private
 
     def test_params
-        params.require(:test).permit(:unique_test_id, :mma, :creatinine, :verified)
+        params.require(:test).permit(:unique_test_id, :mma, :creatinine, :verified,:return_tracking)
     end
 
     def find_test
