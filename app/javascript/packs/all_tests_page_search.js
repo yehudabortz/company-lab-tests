@@ -1,13 +1,11 @@
-// const tableRows = document.getElementsByClassName("divide-y divide-gray-200");
-
-const input = document.getElementById("page-search");
-const tableRows = document.getElementsByClassName("divide-y divide-gray-200");
-
-window.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("turbolinks:load", function () {
   pageSearch();
 });
 
 function pageSearch() {
+  console.log("hi");
+  let input = document.getElementById("page-search");
+  let tableRows = document.getElementsByClassName("divide-y divide-gray-200");
   input.addEventListener("keyup", () => {
     let filter = input.value.toUpperCase();
     for (let i = 0; i < tableRows.length; i++) {
