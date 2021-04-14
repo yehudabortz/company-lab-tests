@@ -4,7 +4,7 @@ class WebflowWebhookController < ApplicationController
     def webflow_webhook
         if webhook_params[:unique_test_id] 
             test = Test.find_by(unique_test_id: webhook_params[:unique_test_id].strip.to_i)
-            if test && test.user == nil
+            if test && !test.user
                 user = User.find_or_create_by(email: webhook_params[:email].strip)
                 unless user.password_digest != nil
                     user.password_digest = SecureRandom.hex(10)
