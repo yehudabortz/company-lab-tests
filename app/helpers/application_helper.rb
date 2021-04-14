@@ -1,7 +1,7 @@
 module ApplicationHelper
 
     def readable_timestamp(stamp)
-        stamp.strftime("%B %d, %Y at %l:%M %p")
+        stamp ? stamp.strftime("%B %d, %Y at %l:%M %p") : "Please update birthday format."
     end
 
     def format_error(error)
