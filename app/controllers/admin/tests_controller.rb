@@ -40,7 +40,8 @@ class Admin::TestsController < ApplicationController
     end
 
     def show
-        find_test
+        redirect_to root_path, notice: "Unable to find test" unless find_test
+        
     end
 
     def edit
