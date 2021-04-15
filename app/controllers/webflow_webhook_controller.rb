@@ -9,7 +9,7 @@ class WebflowWebhookController < ApplicationController
                 unless user.password_digest != nil
                     user.password_digest = SecureRandom.hex(10)
                 end
-                if !user.admin?
+                if !user_is_admin(user)
                     user.tests << test
                     user.is_customer = true
                     user.save
@@ -28,6 +28,20 @@ class WebflowWebhookController < ApplicationController
 
     def user_params 
         webhook_params.except("unique_test_id")
+    end
+
+    def user_is_admin(user)
+        if user.lab_super_admin
+            true
+        elsif user.belongs_to_lab
+            true
+        elsif user.super_admin
+            true
+        elsif user.belongs_to_company
+            true
+        else
+            false
+        end
     end
 
 end
