@@ -9,9 +9,12 @@ class WebflowWebhookController < ApplicationController
                 unless user.password_digest != nil
                     user.password_digest = SecureRandom.hex(10)
                 end
-                user.tests << test
-                user.save
-                user.update(user_params)
+                if !user.company_admin? && !user.lab_admin?
+                    user.tests << test
+                    user.is_customer = true
+                    user.save
+                    user.update(user_params)
+                end
             end 
             render json: user
         end
