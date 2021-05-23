@@ -1,35 +1,38 @@
 <tbody class="divide-y divide-gray-200">
     <tr>
-      <td class="px-6 py-4 whitespace-nowrap text-sm is-link">
-        <%= link_to_test_show_page(test) %>
+        <td class="px-6 py-4 whitespace-nowrap text-sm is-link">
+            <%= test.user ? test.user.first_name + " " + test.user.last_name   : "" %>
+        </td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm is-link">
+            <%= link_to_test_show_page(test) %>
         </td>
         <% if test.verified || current_user.lab_super_admin || current_user.super_admin  %>
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                <%= test.mma %>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                <%= test.creatinine %>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                <%= test.final_result %>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap">
-                <% if test.verified %>
-                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+            <%= test.mma %>
+        </td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+            <%= test.creatinine %>
+        </td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+            <%= test.final_result %>
+        </td>
+        <td class="px-6 py-4 whitespace-nowrap">
+            <% if test.verified %>
+            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                 <% else %>
                 <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
-                <% end %>
+                    <% end %>
                     <%= test.verified %>
                 </span>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                <%= readable_timestamp(test.updated_at) %>
-            </td>
+        </td>
+        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+            <%= readable_timestamp(test.updated_at) %>
+        </td>
         <% end %>
         <% if current_user.lab_super_admin %>
-            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
             <%= link_to "Edit", edit_admin_test_path(test), class: "is-link" %>
-            </td>
+        </td>
         <% end %>
     </tr>
 </tbody>
