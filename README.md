@@ -1,7 +1,11 @@
 # Company Lab Tests
 
-Company Lab Tests is a management and fulfillment web application for Companies and Labs to collaborate on test results and efficiently update and display results to their customers. Companies can have many labs performing tests and Labs can have many Companies serving them tests. 
+Company Lab Tests is a management and fulfillment web application for Companies and Labs to collaborate on test results and efficiently update and display results to their customers. Companies can have many labs performing tests and Labs can have many Companies serving them tests.
+
 ## Installation
+
+- [Live Site](https://company-lab-tests.herokuapp.com)
+- [Demo Video](https://drive.google.com/file/d/1YKdmaqoWHReqCUsoW8xnuW5TmDlmGQML/view?usp=sharing)
 
 - Clone this repository
 
@@ -13,33 +17,34 @@ rvm use 2.6.6
 
 - Bundle Install all dependencies
 
-``` bash
+```bash
 bundle install
 ```
 
 - Create a `.env` file in the root directory
 
-``` bash
+```bash
 touch .env
 ```
 
 - In the `.env` file create your environment variables for OmniAuth for Google
 
-``` bash
+```bash
 GOOGLE_CLIENT_ID=USE YOUR GOOGLE CLIENT ID HERE WITHOUT QUOTES
 GOOGLE_CLIENT_SECRET=YOUR GOOGLE CLIENT SECRET HERE WITHOUT QUOTES
 ```
 
-
 - Migrate the database
-``` bash
-rails db:migrate 
-```  
-- Start the server 
-``` bash
-rails server
+
+```bash
+rails db:migrate
 ```
 
+- Start the server
+
+```bash
+rails server
+```
 
 ## Usage
 
@@ -49,9 +54,11 @@ rails server
 - Accept the request in the Lab dashboard and check the tests table to see it populated with tests form the connected company
 
 ## Contributing
+
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
 
 ## License
+
 [MIT](https://github.com/yehudabortz/company-lab-tests/blob/master/LICENSE)
