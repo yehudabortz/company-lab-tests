@@ -2,10 +2,10 @@
 
 Company Lab Tests is a management and fulfillment web application for Companies and Labs to collaborate on test results and efficiently update and display results to their customers. Companies can have many labs performing tests and Labs can have many Companies serving them tests.
 
-## Installation
-
 - [Live Site](https://company-lab-tests.herokuapp.com)
 - [Demo Video](https://drive.google.com/file/d/1YKdmaqoWHReqCUsoW8xnuW5TmDlmGQML/view?usp=sharing)
+
+## Installation
 
 - Clone this repository
 
